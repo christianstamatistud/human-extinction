@@ -374,9 +374,6 @@ namespace Atrahasis
 
         void InvokeCrouchRoutine()
         {
-            if (movementInputData.IsCrouching)
-                if (CheckIfRoof())
-                    return;
 
             if (m_LandRoutine != null)
                 StopCoroutine(m_LandRoutine);
