@@ -510,7 +510,7 @@ MonoBehaviour:
       m_PreInfinity: 0
       m_PostInfinity: 2
       m_RotationOrder: 4
-  sensitivity: {x: 20, y: 20}
+  sensitivity: {x: 40, y: 40}
   smoothAmount: {x: 5, y: 5}
   lookAngleMinMax: {x: -90, y: 90}
 --- !u!1 &541601251207444883
