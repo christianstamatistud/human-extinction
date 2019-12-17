@@ -303,13 +303,16 @@ namespace Atrahasis
 
         bool CheckIfRoof() /// TO FIX
         {
-            Vector3 _origin = transform.position;
+            Vector3 _offset = new Vector3(0, 1.121f, 0);
+            Vector3 _origin = transform.position + _offset;
             RaycastHit _roofInfo;
 
             bool _hitRoof = Physics.SphereCast(_origin, raySphereRadius, Vector3.up, out _roofInfo, m_initHeight);
 
+            Debug.DrawRay(_origin, Vector3.up);
             return _hitRoof;
         }
+
 
         bool CanRun()
         {
@@ -374,6 +377,9 @@ namespace Atrahasis
 
         void InvokeCrouchRoutine()
         {
+            if (movementInputData.IsCrouching)
+                if (CheckIfRoof())
+                    return;
 
             if (m_LandRoutine != null)
                 StopCoroutine(m_LandRoutine);
