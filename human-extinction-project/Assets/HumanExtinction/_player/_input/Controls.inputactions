@@ -54,15 +54,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Link",
-                    "type": "Button",
-                    "id": "a1dadc00-a01a-4de7-9f09-eadb2d98a102",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Fire",
+                    "name": "LeftMouse",
                     "type": "Button",
                     "id": "045b91d0-a91e-4125-906e-fcd27d336ebb",
                     "expectedControlType": "",
@@ -73,6 +65,14 @@
                     "name": "Interact",
                     "type": "Button",
                     "id": "3bcc8d0f-2f92-4a0d-b90c-6b10fecfb59a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "RightMouse",
+                    "type": "Button",
+                    "id": "d9afbae7-582f-4f8f-9add-8f752ab9291d",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
@@ -246,23 +246,12 @@
                 },
                 {
                     "name": "",
-                    "id": "92d831b6-ea1d-44d4-8b5d-63b89b2284ea",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Link",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "08335416-5b48-4144-9101-6a46fc701a9b",
                     "path": "<Mouse>/leftButton",
                     "interactions": "Press",
                     "processors": "",
                     "groups": "",
-                    "action": "Fire",
+                    "action": "LeftMouse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -274,6 +263,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cf729804-c10a-47ca-800d-9e0a4925b163",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightMouse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
