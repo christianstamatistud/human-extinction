@@ -1,31 +1,38 @@
 ﻿using UnityEngine;
 using NaughtyAttributes;
-
+using TMPro;
 
 namespace CS
 {
     public class SelectionController : MonoBehaviour
     {
+        [BoxGroup("Settings")] [HideInInspector]public string key;
+        [BoxGroup("Settings")] [HideInInspector]public string m_name;
+        TextMeshProUGUI uiPropText;
         [BoxGroup("Settings")] [SerializeField] public float padding = 1.2f;
+        
 
         InteractiveController m_interactiveController;
         Camera m_camera;
+        
 
         private void Awake()
         {
             m_interactiveController = FindObjectOfType<InteractiveController>();
             m_camera = Camera.main;
+            uiPropText = FindObjectOfType<TextMeshProUGUI>();
         }
 
         private void Update()
         {
+            uiPropText.text = m_name + key;
             ToggleSelectionUi();
         }
 
         static Vector3[] screenSpaceCorners;
         void ToggleSelectionUi()
         {
-            if(m_interactiveController.selectedObjectRoot != null)
+            if(m_interactiveController.selectedObjectRoot != null && m_interactiveController.m_interactiveObject.IsInteractable)
             {
                 //transform.DOScale(Vector3.one, m_duration).SetEase(Ease.InSine);
                 for (int i = 0; i < this.transform.childCount; i++)

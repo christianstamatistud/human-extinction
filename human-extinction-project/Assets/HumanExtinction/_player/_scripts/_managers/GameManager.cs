@@ -10,7 +10,7 @@ namespace CS
         InputManager m_inputManager;
 
         [BoxGroup("DEBUG")] [SerializeField] [ReadOnly] bool m_lockCursor;
-        [BoxGroup("DEBUG")] [SerializeField] [ReadOnly] bool m_gamePaused;
+        [BoxGroup("DEBUG")] [SerializeField] [ReadOnly] public bool m_gamePaused;
 
 
         #region BuiltIn Methods

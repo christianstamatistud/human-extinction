@@ -25,6 +25,9 @@ namespace CS
         public delegate void isInteracting();
         public event isInteracting Interacting;
 
+        public delegate void isDraggable();
+        public event isDraggable draggableObjectClick;
+
 
 
 
@@ -75,7 +78,7 @@ namespace CS
 
         public void OnJump(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            if (context.performed && !m_disableInput)
             {
                 isJumping();
                 m_isJumping = true;
@@ -84,7 +87,7 @@ namespace CS
 
         public void OnMovement(InputAction.CallbackContext context)
         {
-            if (context.performed && !m_disableInput)
+            if (context.performed && !m_disableInput )
             {
                 m_isMoving = true;
             }
@@ -127,12 +130,17 @@ namespace CS
 
         public void OnLeftMouse(InputAction.CallbackContext context)
         {
-
+            if(context.performed && !m_disableInput)
+            draggableObjectClick();
         }
 
         public void OnInteract(InputAction.CallbackContext context)
         {
-            Interacting();
+            if (context.performed && !m_disableInput)
+            {
+                Interacting();
+            }
+
         }
 
         public void OnRightMouse(InputAction.CallbackContext context)

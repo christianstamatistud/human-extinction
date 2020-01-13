@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using NaughtyAttributes;
+using TMPro;
 using System;
 
 namespace CS
 {
-
     public class InteractiveController : MonoBehaviour
     {
         InputManager m_inputManager;
@@ -15,8 +15,18 @@ namespace CS
         [BoxGroup("Ray Settings")] [SerializeField] LayerMask m_interactableLayer;
         [Space(10)]
         //Show Selected Objects
-        [BoxGroup("DEBUG")] [SerializeField] [ReadOnly] public InteractiveObject m_interactiveObject;
+        [BoxGroup("DEBUG")] [SerializeField] [HideInInspector] public InteractiveObject m_interactiveObject;
         [BoxGroup("DEBUG")] [SerializeField] [ReadOnly] public GameObject selectedObjectRoot;
+        [BoxGroup("DEBUG")] [SerializeField] [ReadOnly] public GameObject currentObject;
+
+        SelectionController m_selectionController;
+
+
+
+        [BoxGroup("DEBUG")] [SerializeField] [HideInInspector] public GameObject ItemHolder;
+        [BoxGroup("DEBUG")] [SerializeField] [ReadOnly] public bool hasItem;
+
+
         private Rigidbody m_Rigidbody;
 
 
@@ -25,16 +35,20 @@ namespace CS
         {
             m_inputManager = FindObjectOfType<InputManager>();
             m_camera = GetComponentInChildren<Camera>();
+            ItemHolder = GameObject.FindGameObjectWithTag("ItemHolder");
+            m_selectionController = FindObjectOfType<SelectionController>();
         }
 
         private void OnEnable()
         {
             m_inputManager.Interacting += Interact;
+            m_inputManager.draggableObjectClick += Drag;
         }
 
         private void OnDisable()
         {
             m_inputManager.Interacting -= Interact;
+            m_inputManager.draggableObjectClick -= Drag;
 
         }
 
@@ -61,6 +75,12 @@ namespace CS
                 //get object root
                 GameObject hitObject = m_Rigidbody.transform.gameObject;
                 SelectedObject(hitObject);
+
+                if (m_interactiveObject.IsInteractable)
+                {
+                    m_selectionController.key = m_interactiveObject.key;
+                    m_selectionController.m_name = m_interactiveObject.m_name;
+                }
 
             }
             else
@@ -116,11 +136,25 @@ namespace CS
 
         void Interact()
         {
-            if (m_interactiveObject != null)
+            if (m_interactiveObject != null && m_interactiveObject.IsInteractable)
             {
-                m_interactiveObject.OnAction();
-
+                m_interactiveObject.OnInteraction();
             }
+        }
+
+        void Drag()
+        {
+            // Drag Object
+            if (m_interactiveObject != null && !hasItem)
+            {
+                m_interactiveObject.OnDrag();
+            }// Call Drag on Current Object
+            else if (currentObject != null)
+            {
+                currentObject.GetComponentInChildren<InteractiveObject>().OnDrag();
+            }
+
+
         }
     }
 
