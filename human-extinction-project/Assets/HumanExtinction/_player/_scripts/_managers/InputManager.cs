@@ -9,59 +9,38 @@ namespace CS
     {
         Controls m_controls; //Input Actions
 
-        #region Delegates
-        public delegate void OnPlayerJumped();
-        public event OnPlayerJumped isJumping;
-
-        public delegate void OnPlayerCrouch();
-        public event OnPlayerCrouch isCrouching;
-
-        public delegate void OnEscape();
-        public event OnEscape escape;
-
-        public delegate void OnRunning();
-        public event OnRunning isRunning;
-
-        public delegate void isInteracting();
-        public event isInteracting Interacting;
-
-        public delegate void isDraggable();
-        public event isDraggable draggableObjectClick;
-
-
-
-
-        #endregion
-
         #region DEBUG
         [BoxGroup("DEBUG")] [SerializeField] [ReadOnly] bool m_disableInput;
         [BoxGroup("DEBUG")] [SerializeField] [ReadOnly] Vector2 m_inputVector;
         [BoxGroup("DEBUG")] [SerializeField] [ReadOnly] Vector2 m_mouseInputVector;
         [BoxGroup("DEBUG")] [SerializeField] [ReadOnly] bool m_isMoving;
-        [BoxGroup("DEBUG")] [SerializeField] [ReadOnly] bool m_isJumping;
+        [BoxGroup("DEBUG")] [SerializeField] [ReadOnly] public bool isJumping;
+        [BoxGroup("DEBUG")] [SerializeField] [ReadOnly] public bool isRunning;
+        [BoxGroup("DEBUG")] [SerializeField] [ReadOnly] public bool isCrouching;
         #endregion
+
+        public delegate void OnInteractPressed();
+        public event OnInteractPressed playerInteracting;
+
+        public delegate void OnLeftMousePressed();
+        public event OnLeftMousePressed leftMousePressed;
 
         #region GETTERS & SETTERS
         public Vector2 InputVector { get => m_inputVector; }
         public Vector2 MouseInputVector { get => m_mouseInputVector; set => m_mouseInputVector = value; }
         public bool IsMoving { get => m_isMoving; }
-        public bool IsJumping { get => m_isJumping; }
-
         public bool DisableInput { get => m_disableInput; set => m_disableInput = value; }
 
         #endregion
+
+        public delegate void TogglePause();
+        public event TogglePause m_togglePuse;
 
         #region BuiltIn Methods
         private void Awake()
         {
             m_controls = new Controls();
             m_controls.PlayerControls.SetCallbacks(this);
-        }
-
-        private void Update()
-        {
-            m_isJumping = false;
-
         }
 
         #endregion
@@ -76,47 +55,43 @@ namespace CS
             m_controls.Disable();
         }
 
-        public void OnJump(InputAction.CallbackContext context)
-        {
-            if (context.performed && !m_disableInput)
-            {
-                isJumping();
-                m_isJumping = true;
-            }
-        }
-
         public void OnMovement(InputAction.CallbackContext context)
         {
-            if (context.performed && !m_disableInput )
-            {
-                m_isMoving = true;
-            }
-            else
-            {
-                m_isMoving = false;
-            }
-
-            if(!m_disableInput)
-            m_inputVector = context.ReadValue<Vector2>();
+            if (!m_disableInput)
+                m_inputVector = context.ReadValue<Vector2>();
         }
 
         public void OnMouse(InputAction.CallbackContext context)
         {
-            if(!m_disableInput )
+            if(!m_disableInput)
             m_mouseInputVector = context.ReadValue<Vector2>();
+        }
+
+        public void OnJump(InputAction.CallbackContext context)
+        {
+            if (context.performed && !m_disableInput)
+            {
+                isJumping = !isJumping;
+                Debug.Log("Jump Action IM");
+            }
+
         }
 
         public void OnRun(InputAction.CallbackContext context)
         {
-            if (!m_disableInput && context.performed)
-                isRunning();
+            if (context.performed && !m_disableInput)
+            {
+                isRunning = !isRunning;
+                Debug.Log("Run Action IM");
+            }
+
         }
 
         public void OnCrouch(InputAction.CallbackContext context)
         {
             if (context.performed && !m_disableInput) 
             {
-                isCrouching();
+                isCrouching = !isCrouching;
             }
         }
 
@@ -124,27 +99,34 @@ namespace CS
         {
             if (context.performed)
             {
-                escape();
+                m_togglePuse();
             }
         }
 
         public void OnLeftMouse(InputAction.CallbackContext context)
         {
             if(context.performed && !m_disableInput)
-            draggableObjectClick();
+            {
+                leftMousePressed();
+            }
+
         }
 
         public void OnInteract(InputAction.CallbackContext context)
         {
             if (context.performed && !m_disableInput)
             {
-                Interacting();
+                playerInteracting();
             }
 
         }
 
         public void OnRightMouse(InputAction.CallbackContext context)
         {
+            if (context.performed && !m_disableInput)
+            {
+
+            }
 
         }
 

@@ -22,12 +22,12 @@ namespace CS
 
         private void OnEnable()
         {
-            m_inputManager.escape += TogglePause;
+            m_inputManager.m_togglePuse += TogglePause;
         }
 
         private void OnDisable()
         {
-            m_inputManager.escape -= TogglePause;
+            m_inputManager.m_togglePuse -= TogglePause;
         }
         #endregion
 

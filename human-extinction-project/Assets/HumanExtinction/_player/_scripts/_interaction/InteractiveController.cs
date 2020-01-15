@@ -21,6 +21,20 @@ namespace CS
 
         SelectionController m_selectionController;
 
+        private void OnEnable()
+        {
+            m_inputManager.playerInteracting += Interact;
+            m_inputManager.leftMousePressed += AbsorbThrow;
+        }
+
+        private void OnDisable()
+        {
+
+            m_inputManager.playerInteracting -= Interact;
+            m_inputManager.leftMousePressed -= AbsorbThrow;
+
+
+        }
 
 
         [BoxGroup("DEBUG")] [SerializeField] [HideInInspector] public GameObject ItemHolder;
@@ -37,19 +51,6 @@ namespace CS
             m_camera = GetComponentInChildren<Camera>();
             ItemHolder = GameObject.FindGameObjectWithTag("ItemHolder");
             m_selectionController = FindObjectOfType<SelectionController>();
-        }
-
-        private void OnEnable()
-        {
-            m_inputManager.Interacting += Interact;
-            m_inputManager.draggableObjectClick += Drag;
-        }
-
-        private void OnDisable()
-        {
-            m_inputManager.Interacting -= Interact;
-            m_inputManager.draggableObjectClick -= Drag;
-
         }
 
 
@@ -142,7 +143,7 @@ namespace CS
             }
         }
 
-        void Drag()
+        void AbsorbThrow()
         {
             // Drag Object
             if (m_interactiveObject != null && !hasItem)
@@ -154,8 +155,10 @@ namespace CS
                 currentObject.GetComponentInChildren<InteractiveObject>().OnDrag();
             }
 
-
         }
+
+
+
     }
 
 }

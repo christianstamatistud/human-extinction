@@ -26,7 +26,7 @@ namespace CS
                     ""id"": ""fe3463b2-786f-461b-8429-ce6c7ac6d3a2"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press""
+                    ""interactions"": ""Press(behavior=2)""
                 },
                 {
                     ""name"": ""Run"",
@@ -34,7 +34,7 @@ namespace CS
                     ""id"": ""b767d4e7-acfe-4dfa-b86e-7c1319d85ee8"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press""
+                    ""interactions"": ""Press(behavior=2)""
                 },
                 {
                     ""name"": ""Crouch"",
@@ -42,7 +42,7 @@ namespace CS
                     ""id"": ""52d08b4d-e427-4a2d-849b-049c1bb2746b"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press""
+                    ""interactions"": ""Press(behavior=2)""
                 },
                 {
                     ""name"": ""Esc"",
@@ -220,7 +220,7 @@ namespace CS
                     ""id"": ""3eda089e-78a6-4a16-a3e9-81c65370d1de"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""ScaleVector2(x=0.1,y=0.1)"",
                     ""groups"": ""Keyboard and Mouse"",
                     ""action"": ""Mouse"",
                     ""isComposite"": false,
@@ -274,7 +274,7 @@ namespace CS
                     ""name"": """",
                     ""id"": ""6d5bcd85-b66d-44fe-a420-d339a062164a"",
                     ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Interact"",
@@ -285,7 +285,7 @@ namespace CS
                     ""name"": """",
                     ""id"": ""cf729804-c10a-47ca-800d-9e0a4925b163"",
                     ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""RightMouse"",

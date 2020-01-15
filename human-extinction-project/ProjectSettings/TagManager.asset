@@ -19,10 +19,10 @@ TagManager:
   - PostProcessing
   - Ground
   - Interactable
-  - 
-  - 
-  - 
-  - 
+  - Vault
+  - Ladder
+  - Ledge
+  - Wall Run
   - 
   - 
   - 

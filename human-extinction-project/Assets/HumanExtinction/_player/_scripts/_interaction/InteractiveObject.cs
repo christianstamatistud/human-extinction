@@ -16,6 +16,7 @@ namespace CS
         [BoxGroup("Item Settings")] [SerializeField] public bool IsPickable;
         [BoxGroup("Item Settings")] [SerializeField] public bool IsDraggable;
         [BoxGroup("Item Settings")] [SerializeField] public float dragForce = 10;
+        Tween myTween;
 
 
 
@@ -33,9 +34,14 @@ namespace CS
         {
             m_interactiveController = FindObjectOfType<InteractiveController>();
         }
+        private void Update()
+        {
+            
+        }
 
         public void OnInteraction()
         {
+            Debug.Log("Interacting");
             if (IsInteractable)
             {
                 if (IsPickable)
@@ -69,10 +75,12 @@ namespace CS
             print("drag");
             intCon.selectedObjectRoot.GetComponent<Rigidbody>().isKinematic = true;
             //m_interactiveController.lastSelectedObject.transform.position = m_interactiveController.ItemHolder.transform.position;
-            transform.DOMove(m_interactiveController.ItemHolder.transform.position, m_duration).SetEase(scaleEase);
+            myTween = transform.DOMove(m_interactiveController.ItemHolder.transform.position, m_duration).SetEase(scaleEase);
+            myTween.OnComplete(RefineObjectPosition);
             if(isScalable)
             transform.DOScale(scaleSize, m_duration).SetEase(dragEase);
             intCon.selectedObjectRoot.transform.SetParent(intCon.ItemHolder.transform);
+
 
             Collider[] colliders = GetComponentsInChildren<Collider>();
 
@@ -81,6 +89,12 @@ namespace CS
                 c.gameObject.layer = 0;
                 c.enabled = false;
             }
+        }
+
+        void RefineObjectPosition()
+        {
+            transform.position = m_interactiveController.ItemHolder.transform.position;
+            Debug.Log("Refinin");
         }
         public void ClearObject()
         {
@@ -104,6 +118,11 @@ namespace CS
             }
 
             m_interactiveController.currentObject = null;
+        }
+
+        public void PlaceOnGround()
+        {
+
         }
 
     }
