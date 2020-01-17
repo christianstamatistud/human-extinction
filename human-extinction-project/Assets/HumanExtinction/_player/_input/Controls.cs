@@ -67,30 +67,6 @@ namespace CS
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
-                },
-                {
-                    ""name"": ""LeftMouse"",
-                    ""type"": ""Button"",
-                    ""id"": ""045b91d0-a91e-4125-906e-fcd27d336ebb"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Interact"",
-                    ""type"": ""Button"",
-                    ""id"": ""3bcc8d0f-2f92-4a0d-b90c-6b10fecfb59a"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""RightMouse"",
-                    ""type"": ""Button"",
-                    ""id"": ""d9afbae7-582f-4f8f-9add-8f752ab9291d"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -258,39 +234,6 @@ namespace CS
                     ""action"": ""Esc"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""08335416-5b48-4144-9101-6a46fc701a9b"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": ""Press"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""LeftMouse"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""6d5bcd85-b66d-44fe-a420-d339a062164a"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": ""Press"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Interact"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""cf729804-c10a-47ca-800d-9e0a4925b163"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": ""Press"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""RightMouse"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -311,9 +254,6 @@ namespace CS
             m_PlayerControls_Esc = m_PlayerControls.FindAction("Esc", throwIfNotFound: true);
             m_PlayerControls_Movement = m_PlayerControls.FindAction("Movement", throwIfNotFound: true);
             m_PlayerControls_Mouse = m_PlayerControls.FindAction("Mouse", throwIfNotFound: true);
-            m_PlayerControls_LeftMouse = m_PlayerControls.FindAction("LeftMouse", throwIfNotFound: true);
-            m_PlayerControls_Interact = m_PlayerControls.FindAction("Interact", throwIfNotFound: true);
-            m_PlayerControls_RightMouse = m_PlayerControls.FindAction("RightMouse", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -369,9 +309,6 @@ namespace CS
         private readonly InputAction m_PlayerControls_Esc;
         private readonly InputAction m_PlayerControls_Movement;
         private readonly InputAction m_PlayerControls_Mouse;
-        private readonly InputAction m_PlayerControls_LeftMouse;
-        private readonly InputAction m_PlayerControls_Interact;
-        private readonly InputAction m_PlayerControls_RightMouse;
         public struct PlayerControlsActions
         {
             private @Controls m_Wrapper;
@@ -382,9 +319,6 @@ namespace CS
             public InputAction @Esc => m_Wrapper.m_PlayerControls_Esc;
             public InputAction @Movement => m_Wrapper.m_PlayerControls_Movement;
             public InputAction @Mouse => m_Wrapper.m_PlayerControls_Mouse;
-            public InputAction @LeftMouse => m_Wrapper.m_PlayerControls_LeftMouse;
-            public InputAction @Interact => m_Wrapper.m_PlayerControls_Interact;
-            public InputAction @RightMouse => m_Wrapper.m_PlayerControls_RightMouse;
             public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -412,15 +346,6 @@ namespace CS
                     @Mouse.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMouse;
                     @Mouse.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMouse;
                     @Mouse.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMouse;
-                    @LeftMouse.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnLeftMouse;
-                    @LeftMouse.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnLeftMouse;
-                    @LeftMouse.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnLeftMouse;
-                    @Interact.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInteract;
-                    @Interact.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInteract;
-                    @Interact.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInteract;
-                    @RightMouse.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnRightMouse;
-                    @RightMouse.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnRightMouse;
-                    @RightMouse.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnRightMouse;
                 }
                 m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
                 if (instance != null)
@@ -443,15 +368,6 @@ namespace CS
                     @Mouse.started += instance.OnMouse;
                     @Mouse.performed += instance.OnMouse;
                     @Mouse.canceled += instance.OnMouse;
-                    @LeftMouse.started += instance.OnLeftMouse;
-                    @LeftMouse.performed += instance.OnLeftMouse;
-                    @LeftMouse.canceled += instance.OnLeftMouse;
-                    @Interact.started += instance.OnInteract;
-                    @Interact.performed += instance.OnInteract;
-                    @Interact.canceled += instance.OnInteract;
-                    @RightMouse.started += instance.OnRightMouse;
-                    @RightMouse.performed += instance.OnRightMouse;
-                    @RightMouse.canceled += instance.OnRightMouse;
                 }
             }
         }
@@ -473,9 +389,6 @@ namespace CS
             void OnEsc(InputAction.CallbackContext context);
             void OnMovement(InputAction.CallbackContext context);
             void OnMouse(InputAction.CallbackContext context);
-            void OnLeftMouse(InputAction.CallbackContext context);
-            void OnInteract(InputAction.CallbackContext context);
-            void OnRightMouse(InputAction.CallbackContext context);
         }
     }
 }
