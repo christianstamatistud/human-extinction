@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using CodeMonkey.Utils;
+using DG.Tweening;
 
 
 namespace CS
@@ -96,6 +97,13 @@ namespace CS
                     y--;
                 }
             }
+
+        }
+
+
+        public void ToggleInventoryUi(Vector3 position)
+        {
+            transform.DOLocalMove(position, 0.3f);
 
         }
 

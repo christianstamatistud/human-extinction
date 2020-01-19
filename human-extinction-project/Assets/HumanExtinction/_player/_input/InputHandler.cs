@@ -55,6 +55,12 @@ namespace CS
             }
         #endregion
 
+        #region Delegates
+        public delegate void OnPlayerInteract();
+        public event OnPlayerInteract playerInteract;
+
+        #endregion
+
         #region CallBack Actions
 
         public void OnJump(InputAction.CallbackContext context)
@@ -74,19 +80,48 @@ namespace CS
 
         public void OnEsc(InputAction.CallbackContext context)
         {
-            Debug.Log("press esc");
+            if (context.performed)
+            {
+                GameManager.Instance.TogglePause();
+            }
         }
 
         public void OnMovement(InputAction.CallbackContext context)
         {
-            m_movementVector = context.ReadValue<Vector2>();
+            if (!GameManager.Instance.pauseGame && !GameManager.Instance.disableInput)
+                m_movementVector = context.ReadValue<Vector2>();
 
         }
 
         public void OnMouse(InputAction.CallbackContext context)
         {
-            m_mouseVector = context.ReadValue<Vector2>();
+            if(!GameManager.Instance.pauseGame && !GameManager.Instance.disableInput)
+                m_mouseVector = context.ReadValue<Vector2>();
+
         }
+
+        public void OnInteract(InputAction.CallbackContext context)
+        {
+            if (context.performed && !GameManager.Instance.pauseGame && !GameManager.Instance.disableInput)
+            {
+                //Call Interaction Event
+                playerInteract();
+                print("Interacted");
+            }
+        }
+
+        public void OnToggleInventory(InputAction.CallbackContext context)
+        {
+            if (context.performed && !GameManager.Instance.pauseGame)
+            {
+                ResetInput();
+                GameManager.Instance.ToggleCursorState();
+                GameManager.Instance.ToggleInventory();
+            }
+        }
+
+
+
         #endregion
 
         #region Custom Methods
@@ -115,6 +150,12 @@ namespace CS
                 movementInputData.JumpClicked = Input.GetKeyDown(KeyCode.Space);
                 movementInputData.CrouchClicked = Input.GetKeyDown(KeyCode.LeftControl);
             }
+
+        void ResetInput()
+        {
+            m_movementVector = Vector2.zero;
+            m_mouseVector = Vector2.zero;
+        }
         #endregion
     }
 }

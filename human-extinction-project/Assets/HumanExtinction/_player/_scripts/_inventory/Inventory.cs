@@ -5,6 +5,9 @@ namespace CS
 {
     public class Inventory
     {
+
+        public static Inventory instance { get; private set; }
+
         //ADD ITEM TO LIST
         public event EventHandler OnItemListChanged;
         //DEFINE ITEM TYPE
@@ -16,6 +19,7 @@ namespace CS
         {
             //INITIALIZE THE LIST
             itemList = new List<Item>();
+            instance = this;
 
             Debug.Log(itemList.Count);
         }
@@ -24,6 +28,7 @@ namespace CS
         //FUNCTION FOR ADDING ITEMS
         public void AddItem(Item item)
         {
+            Debug.Log(item.itemType);
             //CHECK IF WE HAVE THE SAME ITEM TYPE
             if (item.IsStackable())
             {

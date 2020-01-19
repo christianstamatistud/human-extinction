@@ -31,20 +31,14 @@ namespace CS
 
 
         private Item item;
-        private Transform mesh;
 
-
-        private void Awake()
-        {
-            mesh = transform.Find("mesh").GetComponent<Transform>();
-        }
 
 
         // WE ASK ITEM TO RETURN THE ITEM TYPE AND SPRITE
         public void SetItem(Item item)
         {
             this.item = item;
-            Instantiate(item.GetMesh(), mesh.transform);
+            Instantiate(item.GetMesh(), this.transform);
         }
 
         public Item GetItem()

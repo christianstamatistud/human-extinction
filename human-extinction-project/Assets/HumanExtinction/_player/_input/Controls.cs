@@ -67,6 +67,22 @@ namespace CS
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""6c0f8608-9643-43ae-aa8a-7b8bfc5a6c2b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""ToggleInventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""87f24e3b-a488-4e76-96ff-0b715c585e01"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -234,6 +250,28 @@ namespace CS
                     ""action"": ""Esc"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8ec71603-2f9b-4bbd-9316-5365fbdfea4b"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a9f31255-984d-436b-9e18-3812205d6439"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""ToggleInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -254,6 +292,8 @@ namespace CS
             m_PlayerControls_Esc = m_PlayerControls.FindAction("Esc", throwIfNotFound: true);
             m_PlayerControls_Movement = m_PlayerControls.FindAction("Movement", throwIfNotFound: true);
             m_PlayerControls_Mouse = m_PlayerControls.FindAction("Mouse", throwIfNotFound: true);
+            m_PlayerControls_Interact = m_PlayerControls.FindAction("Interact", throwIfNotFound: true);
+            m_PlayerControls_ToggleInventory = m_PlayerControls.FindAction("ToggleInventory", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -309,6 +349,8 @@ namespace CS
         private readonly InputAction m_PlayerControls_Esc;
         private readonly InputAction m_PlayerControls_Movement;
         private readonly InputAction m_PlayerControls_Mouse;
+        private readonly InputAction m_PlayerControls_Interact;
+        private readonly InputAction m_PlayerControls_ToggleInventory;
         public struct PlayerControlsActions
         {
             private @Controls m_Wrapper;
@@ -319,6 +361,8 @@ namespace CS
             public InputAction @Esc => m_Wrapper.m_PlayerControls_Esc;
             public InputAction @Movement => m_Wrapper.m_PlayerControls_Movement;
             public InputAction @Mouse => m_Wrapper.m_PlayerControls_Mouse;
+            public InputAction @Interact => m_Wrapper.m_PlayerControls_Interact;
+            public InputAction @ToggleInventory => m_Wrapper.m_PlayerControls_ToggleInventory;
             public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -346,6 +390,12 @@ namespace CS
                     @Mouse.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMouse;
                     @Mouse.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMouse;
                     @Mouse.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnMouse;
+                    @Interact.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInteract;
+                    @Interact.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInteract;
+                    @Interact.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnInteract;
+                    @ToggleInventory.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnToggleInventory;
+                    @ToggleInventory.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnToggleInventory;
+                    @ToggleInventory.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnToggleInventory;
                 }
                 m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
                 if (instance != null)
@@ -368,6 +418,12 @@ namespace CS
                     @Mouse.started += instance.OnMouse;
                     @Mouse.performed += instance.OnMouse;
                     @Mouse.canceled += instance.OnMouse;
+                    @Interact.started += instance.OnInteract;
+                    @Interact.performed += instance.OnInteract;
+                    @Interact.canceled += instance.OnInteract;
+                    @ToggleInventory.started += instance.OnToggleInventory;
+                    @ToggleInventory.performed += instance.OnToggleInventory;
+                    @ToggleInventory.canceled += instance.OnToggleInventory;
                 }
             }
         }
@@ -389,6 +445,8 @@ namespace CS
             void OnEsc(InputAction.CallbackContext context);
             void OnMovement(InputAction.CallbackContext context);
             void OnMouse(InputAction.CallbackContext context);
+            void OnInteract(InputAction.CallbackContext context);
+            void OnToggleInventory(InputAction.CallbackContext context);
         }
     }
 }
