@@ -19,7 +19,7 @@ TagManager:
   - PostProcessing
   - Ground
   - Interactable
-  - Vault
+  - Checkers
   - Ladder
   - Ledge
   - Wall Run
