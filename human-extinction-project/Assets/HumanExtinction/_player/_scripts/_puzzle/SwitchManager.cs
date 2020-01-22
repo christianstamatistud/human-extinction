@@ -13,7 +13,6 @@ namespace CS
         public static SwitchManager Instance;
         public string worldToGuess = "fire";
         public string currentWord = "";
-        public Camera m_camera;
 
         public Transform[] lights;
 
@@ -37,30 +36,6 @@ namespace CS
         private void Update()
         {
 
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                RaycastHit hit;
-                Ray ray = m_camera.ScreenPointToRay(Input.mousePosition);
-
-                if (Physics.Raycast(ray, out hit))
-                {
-                    if (hit.transform.gameObject.GetComponent<Switcher>() && currentWord.Length <=3)
-                    {
-                        Switcher s;
-                        s = hit.transform.gameObject.GetComponent<Switcher>();
-                        s.SetLetter();
-                    }
-
-                    if (hit.transform.gameObject.GetComponent<SwitchManager>())
-                    {
-                        GuessWord();
-                    }
-
-                }
-
-
-
-            }
         }
 
         public void AddLetter(string letter)
@@ -69,7 +44,7 @@ namespace CS
 
         }
 
-        void GuessWord()
+        public void GuessWord()
         {
             if(worldToGuess == currentWord)
             {

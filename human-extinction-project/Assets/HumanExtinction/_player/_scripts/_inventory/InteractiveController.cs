@@ -21,7 +21,7 @@ namespace CS
         private float currenthitDistance;
 
         //Hover
-        Renderer currentRenderer;
+        public Renderer[] rs;
         public Material hoverMaterial;
         public Material lastMaterial;
 
@@ -102,8 +102,8 @@ namespace CS
 
             if (hitSomething)
             {
-                ObjectSelection(hit);
-
+                //ObjectSelection(hit);
+                print(hit.transform.name);
 
                 // Interac with doors
                 if (hit.transform.GetComponent<Door>())
@@ -114,13 +114,34 @@ namespace CS
                     if(interaction != null && Input.GetKeyDown(KeyCode.Mouse0))
                     {
                         interaction.OpenDoor();
-                    }else if (interaction.isOpen)
-                    {
-                        interaction.ClosDoor();
                     }
                 }
 
+                //interact switcher
+                if (hit.transform.GetComponent<Switcher>())
+                {
+                    if (Input.GetKeyDown(KeyCode.Mouse0))
+                    {
+                        Switcher sw;
+                        sw = hit.transform.GetComponent<Switcher>();
+                        sw.SetLetter();
 
+                    }
+
+                }
+
+                //if interact switcher manager
+                if (hit.transform.GetComponent<SwitchManager>())
+                {
+                    if (Input.GetKeyDown(KeyCode.Mouse0))
+                    {
+
+                        SwitchManager sm;
+                        sm = hit.transform.GetComponent<SwitchManager>();
+                        sm.GuessWord();
+                    }
+
+                }
             }
             else
             {
@@ -132,17 +153,24 @@ namespace CS
 
         void ObjectSelection(RaycastHit currentRay)
         {
-            currentRenderer = currentRay.transform.GetComponentInChildren<Renderer>();
-            currentRenderer.material.SetColor("_BaseColor", Color.red);
+            rs = currentRay.transform.gameObject.GetComponentsInChildren<Renderer>();
+
+            foreach (Renderer r in rs)
+            {
+                r.material.SetColor("_BaseColor", Color.red);
+            }
 
         }
 
         void ClearSelection()
         {
-            if(currentRenderer != null)
+            if(rs != null)
             {
-                currentRenderer.material.SetColor("_BaseColor", Color.white);
-                currentRenderer = null;
+                foreach (Renderer r in rs)
+                {
+                    r.material.SetColor("_BaseColor", Color.white);
+                }
+                rs = null;
             }
 
         }

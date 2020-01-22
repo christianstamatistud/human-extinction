@@ -54,8 +54,7 @@ namespace CS
                 default:
                 case ItemType.Note:
                 case ItemType.Key:
-                case ItemType.Battery:
-                    return true;
+                case ItemType.Battery:             
                 case ItemType.Light:
                     return false;
 
