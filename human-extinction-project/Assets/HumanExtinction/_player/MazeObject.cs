@@ -23,7 +23,6 @@ public class MazeObject : MonoBehaviour
         player = GetComponentInChildren<FollowThePath>();
         player.enabled = true;
         player.resetColliders += EnableColliders;
-
     }
 
     private void OnDisable()
