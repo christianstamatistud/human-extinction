@@ -5,63 +5,60 @@ using DG.Tweening;
 public class FollowThePath : MonoBehaviour
 {
 
-    public enum CurrentDirection{
-        up,
-        down,
-        left,
-        right,
-        idle,
-        initialPosition
-    }
+    public delegate void Reset();
+    public event Reset resetColliders;
 
-    public CurrentDirection currentDirection = CurrentDirection.initialPosition;
+    public enum CurrentDirection{
+        start,
+        idle,
+        moving
+    }
+    public CurrentDirection currentDirection = CurrentDirection.start;
+    Color initialColor;
     public float moveSpeed = 2f;
+    Vector3 initialPos;
 
     // Ray
     public Transform rayOrigin;
     public LayerMask layerMask;
     public float rayDistance = 10f;
-    Transform currentTarget;
+    public Transform currentTarget;
     Transform lastTarget;
-    public int playerIndex;
+    int playerIndex;
     
     //Check Position
-    bool lockedLeft;
-    bool lockedRight;
-    bool lockedUp;
-    bool lockedDown;
-    bool gameStarted;
+    [HideInInspector]public bool lockedLeft;
+    [HideInInspector] public bool lockedRight;
+    [HideInInspector] public bool lockedUp;
+    [HideInInspector] public bool lockedDown;
+
 
     //timer
     public float startTime;
     float currentTime;
     bool isRunning;
+    bool gameStarted;
 
     //Components
     TrailRenderer tr;
     Transform circle;
 
 
-    private void Start()
-    {
-        currentTime = startTime;
-        tr = GetComponentInChildren<TrailRenderer>();
-    }
-
     private void OnEnable()
     {
+        initialPos = transform.position;
+        currentTime = startTime;
+        tr = GetComponentInChildren<TrailRenderer>();
         circle = transform.Find("circle").GetComponent<Transform>();
-        CircleIn();
-    }
-
-    void CircleIn()
-    {
+        initialColor = tr.material.color;
         circle.DOScale(new Vector3(1, 1, 1), 0.5f);
+
     }
 
-    void CircleOut()
+    private void OnDisable()
     {
         circle.DOScale(new Vector3(0, 0, 0), 0.5f);
+
     }
 
 
@@ -70,19 +67,32 @@ public class FollowThePath : MonoBehaviour
         SetInput();
         CheckTargetInformation();
         Move();
-        ResetGame();
-        //Timer();
+        PlayerInactiveTimer();
     }
 
     void Move()
     {
-        //if (currentDirection == CurrentDirection.up || currentDirection == CurrentDirection.down || currentDirection == CurrentDirection.left || currentDirection == CurrentDirection.right)
-        //{
 
-        //}
+        if (gameStarted)
+        {
+            if (currentTarget != null)
+            {
+                currentDirection = CurrentDirection.moving;
+                transform.position = Vector3.MoveTowards(transform.position, currentTarget.position, Time.deltaTime * moveSpeed);
+            }
+            else
+            {
+                currentDirection = CurrentDirection.idle;
+            }
+        }
+        else
+        {
+            currentDirection = CurrentDirection.start;
 
-        if (currentTarget != null)
-            transform.position = Vector3.MoveTowards(transform.position, currentTarget.position, Time.deltaTime * moveSpeed);
+        }
+
+
+
     }
 
 
@@ -94,41 +104,14 @@ public class FollowThePath : MonoBehaviour
     void SetInput()
     {
 
-        if (gameStarted)
-        {
-            currentDirection = CurrentDirection.idle;
-        }
-        else
-        {
-            currentDirection = CurrentDirection.initialPosition;
-        }
-
-        //move
-        if (Input.GetKey(KeyCode.A))
-        {
-            currentDirection = CurrentDirection.left;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            currentDirection = CurrentDirection.right;
-        }
-        if (Input.GetKey(KeyCode.W))
-        {
-            currentDirection = CurrentDirection.up;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            currentDirection = CurrentDirection.down;
-        }
 
 
         ////////////// Rotate andcheck directions
 
         if (Input.GetKeyDown(KeyCode.A) )
         {
-            gameStarted = true;
             transform.eulerAngles = new Vector3(0, 0, 0);
-            if (!lockedLeft)
+            if (!lockedLeft && currentDirection != CurrentDirection.moving)
                 CheckDirection();
 
         }
@@ -138,9 +121,8 @@ public class FollowThePath : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.D))
         {
-            gameStarted = true;
             transform.eulerAngles = new Vector3(0, 0, -180);
-            if(!lockedRight)
+            if(!lockedRight && currentDirection != CurrentDirection.moving)
             CheckDirection();
         }
 
@@ -149,9 +131,8 @@ public class FollowThePath : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.W))
         {
-            gameStarted = true;
             transform.eulerAngles = new Vector3(0, 0, -90);
-            if(!lockedUp)
+            if(!lockedUp && currentDirection != CurrentDirection.moving)
             CheckDirection();
         }
 
@@ -160,9 +141,8 @@ public class FollowThePath : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.S))
         {
-            gameStarted = true;
             transform.eulerAngles = new Vector3(0, 0, 90);
-            if(!lockedDown)
+            if(!lockedDown && currentDirection != CurrentDirection.moving)
             CheckDirection();
         }
 
@@ -181,16 +161,15 @@ public class FollowThePath : MonoBehaviour
             lockedDown = currentPoint.lockDown;
             lockedUp = currentPoint.lockUp;
 
-  
             UpdateLastTarget();
 
             //UpdateCurrentTargetWhileMove();
-
             DestroyPoints();
 
+            //every point check if win or game over
             OnCompleteMaze();
-            print("hit a point");
-
+            OnWrongPath();
+            currentTarget = null;
         }
     }
 
@@ -201,88 +180,83 @@ public class FollowThePath : MonoBehaviour
         if (p.win)
         {
             tr.material.color = Color.green;
-            CircleOut();
+            GetComponent<FollowThePath>().enabled = false;
+            //destroy maze 
+            //green color
+
         }
+
+        //Go to master and complete
     }
 
-
-    void UpdateCurrentTargetWhileMove()
+    void OnWrongPath()
     {
-        print("update");
-        if (currentDirection == CurrentDirection.left)
+        Point p = currentTarget.GetComponent<Point>();
+        if (p.gameOver)
         {
-            if (!lockedLeft)
-            {
-                CheckDirection();
-            }
-        }
-
-        if (currentDirection == CurrentDirection.right)
-        {
-            if (!lockedRight)
-            {
-                CheckDirection();
-            }
-        }
-
-        if (currentDirection == CurrentDirection.up)
-        {
-            if (!lockedUp)
-            {
-                CheckDirection();
-            }
-        }
-
-        if (currentDirection == CurrentDirection.down)
-        {
-            if (!lockedDown)
-            {
-                CheckDirection();
-            }
+            tr.material.color = Color.red;
+            //reset game
+            circle.DOScale(new Vector3(0, 0, 0), 0.2f).OnComplete(() => ResetGame());
         }
     }
 
+    // destroy points behind us
     void DestroyPoints ()
     {
         lastTarget.GetComponent<CircleCollider2D>().enabled = false;
     }
 
-
-    void Timer()
+    // Check if we are inactive
+    void PlayerInactiveTimer()
     {
+
+        if (currentDirection == CurrentDirection.idle)
+        {
+            isRunning = true;
+
+        }
+        else
+        {
+            currentTime = startTime;
+            isRunning = false;
+        }
+
         if (isRunning)
         {
             currentTime = currentTime - 1 * Time.deltaTime;
             if(currentTime <= 0)
             {
                 currentTime = startTime;
-                DestroyPlayer();
+                ResetGame();
                 isRunning = false;
-                
                 print("timeExpired");
             }
         }
 
     }
 
-    void DestroyPlayer()
-    {
-        Destroy(gameObject);
-    }
+
     void ResetGame()
     {
-        if (currentDirection == CurrentDirection.idle)
-        {
-            isRunning = true;
-            //if timer == 2
-            // destroy
-        }
-        else
-        {
-            currentTime = startTime;
-            isRunning = false;
-            //reset timer
-        }
+
+        transform.position = initialPos;
+        tr.time = 0;
+        tr.material.color = initialColor;
+        currentTarget = null;
+        lastTarget = null;
+        circle.DOScale(new Vector3(1f, 1f, 1f), 0.2f).OnComplete(() => tr.time = 1000);
+        lockedDown = false;
+        lockedUp = false;
+        lockedRight = false;
+        lockedLeft = false;
+        gameStarted = false;
+
+        if(resetColliders !=null)
+        resetColliders();
+
+        print("resetting");
+        // call funcion to reset 
+
     }
 
 
@@ -293,8 +267,17 @@ public class FollowThePath : MonoBehaviour
         if (hit)
         {
             currentTarget = hit.transform;
-            hit.transform.GetComponent<Point>().index = playerIndex;
+
+            Point p;
+            p = hit.transform.GetComponent<Point>();
+            p.index = playerIndex;
+
+            rayDistance = p.raySize;
+
+
+
             print("hit something");
+            gameStarted = true;
         }
 
         Debug.DrawRay(transform.position, rayOrigin.up, Color.green);
