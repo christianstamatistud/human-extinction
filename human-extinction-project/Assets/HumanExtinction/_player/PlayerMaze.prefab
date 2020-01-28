@@ -74,7 +74,7 @@ TrailRenderer:
   m_Time: 1000
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.03
+    widthMultiplier: 0.035
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -122,10 +122,10 @@ TrailRenderer:
     numCornerVertices: 0
     numCapVertices: 20
     alignment: 0
-    textureMode: 0
+    textureMode: 1
     shadowBias: 0
     generateLightingData: 0
-  m_MinVertexDistance: 0.001
+  m_MinVertexDistance: 0
   m_Autodestruct: 0
   m_Emitting: 1
 --- !u!1 &7074134013470878716
@@ -152,8 +152,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7074134013470878716}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.449, y: -1.727, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.03, y: 0.03, z: 0.03}
   m_Children:
   - {fileID: 7074134013683018876}
@@ -174,15 +174,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68b680289332fd84a8fcb667bd1d2efe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentDirection: 4
-  moveSpeed: 0.2
+  currentDirection: 0
+  startPosition: {fileID: 0}
+  moveSpeed: 0.3
   rayOrigin: {fileID: 7074134014855213526}
   layerMask:
     serializedVersion: 2
     m_Bits: 8192
-  rayDistance: 0.5
-  playerIndex: 0
-  startTime: 0.2
+  rayDistance: 0.4
+  currentTarget: {fileID: 0}
+  lockedLeft: 0
+  lockedRight: 0
+  lockedUp: 1
+  lockedDown: 0
+  gameStarted: 0
+  startTime: 1
 --- !u!1 &7074134013683018879
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,7 +215,7 @@ Transform:
   m_GameObject: {fileID: 7074134013683018879}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7074134013470878594}
   m_RootOrder: 0

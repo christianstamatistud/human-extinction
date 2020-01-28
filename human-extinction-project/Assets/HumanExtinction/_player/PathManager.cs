@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class PathManager : MonoBehaviour
 {
-    
+
 
     CircleCollider2D[] colliders;
     public Transform startPosition;
     public GameObject playerPrefab;
+    public Transform root;
+
 
     private void Awake()
     {
         colliders = GetComponentsInParent<CircleCollider2D>();
+        root = GetComponentInParent<Transform>().root;
+    }
+
+    private void Start()
+    {
         BeginPuzzle();
     }
 
@@ -42,6 +49,9 @@ public class PathManager : MonoBehaviour
     void Instantiate()
     {
         Instantiate(playerPrefab, startPosition.position, Quaternion.identity);
+
+        GameObject.Find("PlayerMaze(Clone)").transform.parent = root.transform;
+        
     }
 
     public void Win()
