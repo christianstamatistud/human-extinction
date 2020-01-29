@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: SpaceScenePPVolume
+  m_Name: SpaceScenePPVolume 1
   m_EditorClassIdentifier: 
   components:
   - {fileID: 3825148066051608106}
@@ -271,7 +271,7 @@ MonoBehaviour:
     m_Value: 1
   focusDistance:
     m_OverrideState: 1
-    m_Value: 0.8
+    m_Value: 0.2
     min: 0.1
   nearFocusStart:
     m_OverrideState: 0

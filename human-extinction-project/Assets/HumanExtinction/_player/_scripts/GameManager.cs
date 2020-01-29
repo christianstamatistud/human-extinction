@@ -12,7 +12,7 @@ namespace CS
 
         [BoxGroup("Game Manager")][ReadOnly] public bool lockCursor;
         [BoxGroup("Game Manager")] [ReadOnly] public bool disableInput;
-
+        [BoxGroup("Game Manager")] [ReadOnly] public bool onMainMenu;
         //Player Ui
         [BoxGroup("Game Manager")] [ReadOnly] public bool toggleInventory;
         UI_Inventory uiInventory;
@@ -31,10 +31,10 @@ namespace CS
         void SetReferences()
         {
             Instance = this;
-            ToggleCursorState();
             uiInventory = FindObjectOfType<UI_Inventory>();
             uiPauseGame = FindObjectOfType<UI_PauseMenu>();
             uiCrossHair = FindObjectOfType<UI_CrossHair>();
+            onMainMenu = true;
 
         }
 
