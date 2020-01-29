@@ -80,7 +80,7 @@ namespace CS
 
         public void OnEsc(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            if (context.performed && !GameManager.Instance.onMainMenu)
             {
                 GameManager.Instance.TogglePause();
             }
@@ -147,8 +147,8 @@ namespace CS
                 if(movementInputData.RunReleased)
                     movementInputData.IsRunning = false;
 
-                movementInputData.JumpClicked = Input.GetKeyDown(KeyCode.Space);
-                movementInputData.CrouchClicked = Input.GetKeyDown(KeyCode.LeftControl);
+                //movementInputData.JumpClicked = Input.GetKeyDown(KeyCode.Space);
+                //movementInputData.CrouchClicked = Input.GetKeyDown(KeyCode.LeftControl);
             }
 
         void ResetInput()
