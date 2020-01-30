@@ -1,64 +1,100 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
-public class MazeObject : MonoBehaviour
+namespace CS
 {
-
-
-
-    public CircleCollider2D[] colliders;
-    public Transform startPosition;
-    public GameObject playerPrefab;
-
-    public Transform input;
-    public Transform output;
-
-    public bool hasPower;
-    FollowThePath player;
-
-    private void OnEnable()
+    public class MazeObject : MonoBehaviour
     {
-        colliders = transform.Find("path").GetComponentsInChildren<CircleCollider2D>();
-        player = GetComponentInChildren<FollowThePath>();
-        player.enabled = true;
-        player.resetColliders += EnableColliders;
-    }
-
-    private void OnDisable()
-    {
-        player.resetColliders -= EnableColliders;
-        player.enabled = false;
-
-    }
 
 
-    public void EnableColliders()
-    {
-        foreach (CircleCollider2D cs in colliders)
+
+        private SphereCollider[] colliders;
+        public Transform mazeCamera;
+        public Transform startPosition;
+        private FollowThePath playerPrefab;
+        public Renderer MeshRenderer;
+        private SpriteRenderer maze;
+        public Transform cameraHolder;
+
+        public bool hasPower;
+        public bool mazeComplete;
+
+        private void Awake()
         {
-            cs.enabled = true;
+            playerPrefab = GetComponentInChildren<FollowThePath>();
+            playerPrefab.enabled = true;
+            maze = transform.Find("maze_sprite").GetComponent<SpriteRenderer>();
+            colliders = transform.Find("path").GetComponentsInChildren<SphereCollider>();
+            cameraHolder = FindObjectOfType<InteractiveController>().GetComponent<Transform>();
+
+
         }
 
-        Point p;
-        p = startPosition.GetComponent<Point>();
-        player.lockedDown = p.lockDown;
-        player.lockedLeft = p.lockLeft;
-        player.lockedRight= p.lockRight;
-        player.lockedUp = p.lockUp;
-        startPosition.GetComponent<CircleCollider2D>().enabled = false;
-    }
+        private void OnEnable()
+        {
+            playerPrefab.resetColliders += EnableColliders;
+            playerPrefab.puzzleComplete += PuzzleComplete;
+        }
 
 
-    public void PuzzleComplete()
-    {
-        //activate output
-    }
+        public void StartMaze()
+        {
+            playerPrefab.transform.GetComponent<FollowThePath>().StartPlayer();
+            
 
-    public void ResetPuzzle()
-    {
-        //instanciate
-        //enable
+        }
+
+        private void OnDisable()
+        {
+            playerPrefab.resetColliders -= EnableColliders;
+            playerPrefab.puzzleComplete -= PuzzleComplete;
+
+        }
+
+
+        public void EnableColliders()
+        {
+            foreach (SphereCollider cs in colliders)
+            {
+                cs.enabled = true;
+            }
+
+            Point p;
+            p = startPosition.GetComponent<Point>();
+            playerPrefab.lockedDown = p.lockDown;
+            playerPrefab.lockedLeft = p.lockLeft;
+            playerPrefab.lockedRight = p.lockRight;
+            playerPrefab.lockedUp = p.lockUp;
+            startPosition.GetComponent<SphereCollider>().enabled = false;
+        }
+
+
+        public void PuzzleComplete()
+        {
+
+            mazeComplete = true;
+            MeshRenderer.materials[2].SetColor("_BaseColor", Color.green);
+            maze.enabled = false;
+            Destroy(playerPrefab.gameObject);
+
+
+            //rivedere
+            Transform cpt;
+            cpt = mazeCamera.GetComponent<Transform>();
+            cpt.SetParent(null);
+            cpt.DORotate(cameraHolder.transform.rotation.eulerAngles, 1);
+            cpt.DOMove(cameraHolder.transform.position, 1).OnComplete(() => cpt.SetParent(cameraHolder.transform));
+            GameManager.Instance.disableInput = false;
+
+            
+        }
+
+
+
     }
 
 }
+
+
