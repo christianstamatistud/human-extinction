@@ -1,5 +1,84 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &79957097
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 79957098}
+  - component: {fileID: 79957100}
+  - component: {fileID: 79957099}
+  m_Layer: 10
+  m_Name: sphere
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &79957098
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79957097}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7074134013470878594}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &79957100
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79957097}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &79957099
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79957097}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: c096487bc8940a641b740558877afbcf, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &7074134013363849029
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,7 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7074134013363849028}
   - component: {fileID: 7074134013363849035}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,13 +217,13 @@ GameObject:
   m_Component:
   - component: {fileID: 7074134013470878594}
   - component: {fileID: 7074134013470878595}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlayerMaze
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7074134013470878594
 Transform:
   m_ObjectHideFlags: 0
@@ -154,11 +233,12 @@ Transform:
   m_GameObject: {fileID: 7074134013470878716}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.03, y: 0.03, z: 0.03}
+  m_LocalScale: {x: 0.030000012, y: 0.030000007, z: 0.030000007}
   m_Children:
   - {fileID: 7074134013683018876}
   - {fileID: 7074134013363849028}
   - {fileID: 7074134014855213526}
+  - {fileID: 79957098}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -175,20 +255,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentDirection: 0
-  startPosition: {fileID: 0}
-  moveSpeed: 0.3
-  rayOrigin: {fileID: 7074134014855213526}
+  moveSpeed: 0.5
   layerMask:
     serializedVersion: 2
     m_Bits: 8192
-  rayDistance: 0.4
+  rayDistance: 0.3
   currentTarget: {fileID: 0}
   lockedLeft: 0
   lockedRight: 0
-  lockedUp: 1
+  lockedUp: 0
   lockedDown: 0
-  gameStarted: 0
-  startTime: 1
 --- !u!1 &7074134013683018879
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,7 +275,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7074134013683018876}
   - component: {fileID: 7074134013683018877}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +336,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 8178242b0cf1e324cba21c8835d13848, type: 3}
-  m_Color: {r: 1, g: 0.5126301, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.7090907, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -279,10 +355,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7074134014855213526}
-  m_Layer: 0
-  m_Name: RayCheck
+  m_Layer: 10
+  m_Name: ray
   m_TagString: Untagged
-  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1

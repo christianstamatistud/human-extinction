@@ -19,6 +19,7 @@ namespace CS
 
         public Vector2 m_movementVector;
         Vector2 m_mouseVector;
+        public bool isRunning;
 
         #endregion
 
@@ -63,20 +64,23 @@ namespace CS
 
         #region CallBack Actions
 
-        public void OnJump(InputAction.CallbackContext context)
+        public void OnRunPressed(InputAction.CallbackContext context)
         {
-            Debug.Log("press jump");
+            if (!GameManager.Instance.pauseGame && !GameManager.Instance.disableInput)
+            {
+                isRunning = true;
+            }
         }
 
-        public void OnRun(InputAction.CallbackContext context)
+        public void OnRunReleased(InputAction.CallbackContext context)
         {
-            Debug.Log("press shift");
+            if (!GameManager.Instance.pauseGame && !GameManager.Instance.disableInput)
+            {
+                isRunning = false;
+            }
         }
 
-        public void OnCrouch(InputAction.CallbackContext context)
-        {
-            Debug.Log("press crouch");
-        }
+
 
         public void OnEsc(InputAction.CallbackContext context)
         {
@@ -156,6 +160,7 @@ namespace CS
             m_movementVector = Vector2.zero;
             m_mouseVector = Vector2.zero;
         }
+
         #endregion
     }
 }

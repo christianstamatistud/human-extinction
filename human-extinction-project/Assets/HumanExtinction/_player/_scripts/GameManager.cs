@@ -13,6 +13,8 @@ namespace CS
         [BoxGroup("Game Manager")][ReadOnly] public bool lockCursor;
         [BoxGroup("Game Manager")] [ReadOnly] public bool disableInput;
         [BoxGroup("Game Manager")] [ReadOnly] public bool onMainMenu;
+        [BoxGroup("Game Manager")] [ReadOnly] public bool solvingMaze;
+
         //Player Ui
         [BoxGroup("Game Manager")] [ReadOnly] public bool toggleInventory;
         UI_Inventory uiInventory;
@@ -21,6 +23,7 @@ namespace CS
         //Pause Menu
         [BoxGroup("Game Manager")] [ReadOnly] public bool pauseGame;
         UI_PauseMenu uiPauseGame;
+        [HideInInspector]public InteractiveController interactiveController;
 
         private void Awake()
         {

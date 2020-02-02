@@ -21,28 +21,20 @@ namespace CS
             ""id"": ""34b439f2-37aa-4b81-b27c-32ab1955d99c"",
             ""actions"": [
                 {
-                    ""name"": ""Jump"",
-                    ""type"": ""Button"",
-                    ""id"": ""fe3463b2-786f-461b-8429-ce6c7ac6d3a2"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press(behavior=2)""
-                },
-                {
-                    ""name"": ""Run"",
+                    ""name"": ""RunPressed"",
                     ""type"": ""Button"",
                     ""id"": ""b767d4e7-acfe-4dfa-b86e-7c1319d85ee8"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press(behavior=2)""
+                    ""interactions"": ""Press""
                 },
                 {
-                    ""name"": ""Crouch"",
+                    ""name"": ""RunReleased"",
                     ""type"": ""Button"",
-                    ""id"": ""52d08b4d-e427-4a2d-849b-049c1bb2746b"",
+                    ""id"": ""eeb3f5f5-7a90-48e3-bb58-ab81b8b102fb"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press(behavior=2)""
+                    ""interactions"": ""Press(behavior=1)""
                 },
                 {
                     ""name"": ""Esc"",
@@ -86,17 +78,6 @@ namespace CS
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""5d41bb27-77c9-470b-a6c5-18d67405cadf"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": ""WASD"",
                     ""id"": ""034d6e88-6550-4bc4-aea4-000d204acd8e"",
@@ -225,18 +206,7 @@ namespace CS
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""Run"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8c12c846-a3f5-49f9-bdce-07659028101f"",
-                    ""path"": ""<Keyboard>/leftCtrl"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard and Mouse"",
-                    ""action"": ""Crouch"",
+                    ""action"": ""RunPressed"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -272,6 +242,101 @@ namespace CS
                     ""action"": ""ToggleInventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""adaa3214-df4c-4859-9a2d-d2701a6ab66d"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""RunReleased"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""PlayerMaze"",
+            ""id"": ""fa91c1c9-c0a6-4698-ba83-ce4fa4a37c7b"",
+            ""actions"": [
+                {
+                    ""name"": ""OnUpAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""fc60b9eb-e7fa-4f7c-92dc-cd439b88a43a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""OnDownAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""96d9cd2b-7e4e-411b-bb11-4cf471d58ce8"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""OnRightAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""e36ca0fd-c4a9-42be-93f6-7a7aa9851b24"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""OnLeftAction"",
+                    ""type"": ""Button"",
+                    ""id"": ""58a50e86-7a6b-4e24-b46d-a67bf907f4e7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""9f69a789-52ff-486c-8c0f-46e84c3c4a80"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""OnUpAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b1645112-3051-4718-b74b-3220fd0ae72d"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""OnDownAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3d40be7b-9a17-4720-8a38-c79d705455c5"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""OnRightAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""305c5c19-8613-47e7-9d16-d927023a91b4"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""OnLeftAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -286,14 +351,19 @@ namespace CS
 }");
             // PlayerControls
             m_PlayerControls = asset.FindActionMap("PlayerControls", throwIfNotFound: true);
-            m_PlayerControls_Jump = m_PlayerControls.FindAction("Jump", throwIfNotFound: true);
-            m_PlayerControls_Run = m_PlayerControls.FindAction("Run", throwIfNotFound: true);
-            m_PlayerControls_Crouch = m_PlayerControls.FindAction("Crouch", throwIfNotFound: true);
+            m_PlayerControls_RunPressed = m_PlayerControls.FindAction("RunPressed", throwIfNotFound: true);
+            m_PlayerControls_RunReleased = m_PlayerControls.FindAction("RunReleased", throwIfNotFound: true);
             m_PlayerControls_Esc = m_PlayerControls.FindAction("Esc", throwIfNotFound: true);
             m_PlayerControls_Movement = m_PlayerControls.FindAction("Movement", throwIfNotFound: true);
             m_PlayerControls_Mouse = m_PlayerControls.FindAction("Mouse", throwIfNotFound: true);
             m_PlayerControls_Interact = m_PlayerControls.FindAction("Interact", throwIfNotFound: true);
             m_PlayerControls_ToggleInventory = m_PlayerControls.FindAction("ToggleInventory", throwIfNotFound: true);
+            // PlayerMaze
+            m_PlayerMaze = asset.FindActionMap("PlayerMaze", throwIfNotFound: true);
+            m_PlayerMaze_OnUpAction = m_PlayerMaze.FindAction("OnUpAction", throwIfNotFound: true);
+            m_PlayerMaze_OnDownAction = m_PlayerMaze.FindAction("OnDownAction", throwIfNotFound: true);
+            m_PlayerMaze_OnRightAction = m_PlayerMaze.FindAction("OnRightAction", throwIfNotFound: true);
+            m_PlayerMaze_OnLeftAction = m_PlayerMaze.FindAction("OnLeftAction", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -343,9 +413,8 @@ namespace CS
         // PlayerControls
         private readonly InputActionMap m_PlayerControls;
         private IPlayerControlsActions m_PlayerControlsActionsCallbackInterface;
-        private readonly InputAction m_PlayerControls_Jump;
-        private readonly InputAction m_PlayerControls_Run;
-        private readonly InputAction m_PlayerControls_Crouch;
+        private readonly InputAction m_PlayerControls_RunPressed;
+        private readonly InputAction m_PlayerControls_RunReleased;
         private readonly InputAction m_PlayerControls_Esc;
         private readonly InputAction m_PlayerControls_Movement;
         private readonly InputAction m_PlayerControls_Mouse;
@@ -355,9 +424,8 @@ namespace CS
         {
             private @Controls m_Wrapper;
             public PlayerControlsActions(@Controls wrapper) { m_Wrapper = wrapper; }
-            public InputAction @Jump => m_Wrapper.m_PlayerControls_Jump;
-            public InputAction @Run => m_Wrapper.m_PlayerControls_Run;
-            public InputAction @Crouch => m_Wrapper.m_PlayerControls_Crouch;
+            public InputAction @RunPressed => m_Wrapper.m_PlayerControls_RunPressed;
+            public InputAction @RunReleased => m_Wrapper.m_PlayerControls_RunReleased;
             public InputAction @Esc => m_Wrapper.m_PlayerControls_Esc;
             public InputAction @Movement => m_Wrapper.m_PlayerControls_Movement;
             public InputAction @Mouse => m_Wrapper.m_PlayerControls_Mouse;
@@ -372,15 +440,12 @@ namespace CS
             {
                 if (m_Wrapper.m_PlayerControlsActionsCallbackInterface != null)
                 {
-                    @Jump.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnJump;
-                    @Jump.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnJump;
-                    @Jump.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnJump;
-                    @Run.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnRun;
-                    @Run.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnRun;
-                    @Run.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnRun;
-                    @Crouch.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnCrouch;
-                    @Crouch.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnCrouch;
-                    @Crouch.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnCrouch;
+                    @RunPressed.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnRunPressed;
+                    @RunPressed.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnRunPressed;
+                    @RunPressed.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnRunPressed;
+                    @RunReleased.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnRunReleased;
+                    @RunReleased.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnRunReleased;
+                    @RunReleased.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnRunReleased;
                     @Esc.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnEsc;
                     @Esc.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnEsc;
                     @Esc.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnEsc;
@@ -400,15 +465,12 @@ namespace CS
                 m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
                 if (instance != null)
                 {
-                    @Jump.started += instance.OnJump;
-                    @Jump.performed += instance.OnJump;
-                    @Jump.canceled += instance.OnJump;
-                    @Run.started += instance.OnRun;
-                    @Run.performed += instance.OnRun;
-                    @Run.canceled += instance.OnRun;
-                    @Crouch.started += instance.OnCrouch;
-                    @Crouch.performed += instance.OnCrouch;
-                    @Crouch.canceled += instance.OnCrouch;
+                    @RunPressed.started += instance.OnRunPressed;
+                    @RunPressed.performed += instance.OnRunPressed;
+                    @RunPressed.canceled += instance.OnRunPressed;
+                    @RunReleased.started += instance.OnRunReleased;
+                    @RunReleased.performed += instance.OnRunReleased;
+                    @RunReleased.canceled += instance.OnRunReleased;
                     @Esc.started += instance.OnEsc;
                     @Esc.performed += instance.OnEsc;
                     @Esc.canceled += instance.OnEsc;
@@ -428,6 +490,63 @@ namespace CS
             }
         }
         public PlayerControlsActions @PlayerControls => new PlayerControlsActions(this);
+
+        // PlayerMaze
+        private readonly InputActionMap m_PlayerMaze;
+        private IPlayerMazeActions m_PlayerMazeActionsCallbackInterface;
+        private readonly InputAction m_PlayerMaze_OnUpAction;
+        private readonly InputAction m_PlayerMaze_OnDownAction;
+        private readonly InputAction m_PlayerMaze_OnRightAction;
+        private readonly InputAction m_PlayerMaze_OnLeftAction;
+        public struct PlayerMazeActions
+        {
+            private @Controls m_Wrapper;
+            public PlayerMazeActions(@Controls wrapper) { m_Wrapper = wrapper; }
+            public InputAction @OnUpAction => m_Wrapper.m_PlayerMaze_OnUpAction;
+            public InputAction @OnDownAction => m_Wrapper.m_PlayerMaze_OnDownAction;
+            public InputAction @OnRightAction => m_Wrapper.m_PlayerMaze_OnRightAction;
+            public InputAction @OnLeftAction => m_Wrapper.m_PlayerMaze_OnLeftAction;
+            public InputActionMap Get() { return m_Wrapper.m_PlayerMaze; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(PlayerMazeActions set) { return set.Get(); }
+            public void SetCallbacks(IPlayerMazeActions instance)
+            {
+                if (m_Wrapper.m_PlayerMazeActionsCallbackInterface != null)
+                {
+                    @OnUpAction.started -= m_Wrapper.m_PlayerMazeActionsCallbackInterface.OnOnUpAction;
+                    @OnUpAction.performed -= m_Wrapper.m_PlayerMazeActionsCallbackInterface.OnOnUpAction;
+                    @OnUpAction.canceled -= m_Wrapper.m_PlayerMazeActionsCallbackInterface.OnOnUpAction;
+                    @OnDownAction.started -= m_Wrapper.m_PlayerMazeActionsCallbackInterface.OnOnDownAction;
+                    @OnDownAction.performed -= m_Wrapper.m_PlayerMazeActionsCallbackInterface.OnOnDownAction;
+                    @OnDownAction.canceled -= m_Wrapper.m_PlayerMazeActionsCallbackInterface.OnOnDownAction;
+                    @OnRightAction.started -= m_Wrapper.m_PlayerMazeActionsCallbackInterface.OnOnRightAction;
+                    @OnRightAction.performed -= m_Wrapper.m_PlayerMazeActionsCallbackInterface.OnOnRightAction;
+                    @OnRightAction.canceled -= m_Wrapper.m_PlayerMazeActionsCallbackInterface.OnOnRightAction;
+                    @OnLeftAction.started -= m_Wrapper.m_PlayerMazeActionsCallbackInterface.OnOnLeftAction;
+                    @OnLeftAction.performed -= m_Wrapper.m_PlayerMazeActionsCallbackInterface.OnOnLeftAction;
+                    @OnLeftAction.canceled -= m_Wrapper.m_PlayerMazeActionsCallbackInterface.OnOnLeftAction;
+                }
+                m_Wrapper.m_PlayerMazeActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @OnUpAction.started += instance.OnOnUpAction;
+                    @OnUpAction.performed += instance.OnOnUpAction;
+                    @OnUpAction.canceled += instance.OnOnUpAction;
+                    @OnDownAction.started += instance.OnOnDownAction;
+                    @OnDownAction.performed += instance.OnOnDownAction;
+                    @OnDownAction.canceled += instance.OnOnDownAction;
+                    @OnRightAction.started += instance.OnOnRightAction;
+                    @OnRightAction.performed += instance.OnOnRightAction;
+                    @OnRightAction.canceled += instance.OnOnRightAction;
+                    @OnLeftAction.started += instance.OnOnLeftAction;
+                    @OnLeftAction.performed += instance.OnOnLeftAction;
+                    @OnLeftAction.canceled += instance.OnOnLeftAction;
+                }
+            }
+        }
+        public PlayerMazeActions @PlayerMaze => new PlayerMazeActions(this);
         private int m_KeyboardandMouseSchemeIndex = -1;
         public InputControlScheme KeyboardandMouseScheme
         {
@@ -439,14 +558,20 @@ namespace CS
         }
         public interface IPlayerControlsActions
         {
-            void OnJump(InputAction.CallbackContext context);
-            void OnRun(InputAction.CallbackContext context);
-            void OnCrouch(InputAction.CallbackContext context);
+            void OnRunPressed(InputAction.CallbackContext context);
+            void OnRunReleased(InputAction.CallbackContext context);
             void OnEsc(InputAction.CallbackContext context);
             void OnMovement(InputAction.CallbackContext context);
             void OnMouse(InputAction.CallbackContext context);
             void OnInteract(InputAction.CallbackContext context);
             void OnToggleInventory(InputAction.CallbackContext context);
+        }
+        public interface IPlayerMazeActions
+        {
+            void OnOnUpAction(InputAction.CallbackContext context);
+            void OnOnDownAction(InputAction.CallbackContext context);
+            void OnOnRightAction(InputAction.CallbackContext context);
+            void OnOnLeftAction(InputAction.CallbackContext context);
         }
     }
 }
