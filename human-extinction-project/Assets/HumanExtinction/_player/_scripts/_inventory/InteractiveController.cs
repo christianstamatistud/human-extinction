@@ -26,10 +26,6 @@ namespace CS
         public Material hoverMaterial;
         public Material lastMaterial;
 
-        //Interact With Maze
-        public Transform cameraParent;
-        public Transform cameraHolder;
-
         private void Awake()
         {
             inventory = new Inventory();
@@ -155,11 +151,6 @@ namespace CS
 
                         if(mo!=null)
                         GameManager.Instance.disableInput = true;
-                        mo.StartMaze();
-
-                        cameraParent.transform.SetParent(null);
-                        cameraParent.transform.DOMove(mo.mazeCamera.transform.position, 1);
-                        cameraParent.transform.DOLocalRotate(mo.mazeCamera.transform.rotation.eulerAngles, 1).OnComplete(() => cameraParent.transform.SetParent(mo.mazeCamera.transform));
 
 
                         //mainCamera.enabled = false;
