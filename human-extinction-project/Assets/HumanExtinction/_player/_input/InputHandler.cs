@@ -155,7 +155,7 @@ namespace CS
                 //movementInputData.CrouchClicked = Input.GetKeyDown(KeyCode.LeftControl);
             }
 
-        void ResetInput()
+        public void ResetInput()
         {
             m_movementVector = Vector2.zero;
             m_mouseVector = Vector2.zero;

@@ -21,6 +21,9 @@ namespace CS
         public bool isOpen;
         public bool isUnlocked;
 
+        public Vector3 door1;
+        public Vector3 door2;
+
         private void Awake()
         {
             bc = GetComponent<BoxCollider>();
@@ -39,8 +42,8 @@ namespace CS
                         Item myItem;
                         myItem = Inventory.instance.itemList[i];
 
-                        openSequence.Append(doorOne.DOLocalMove(new Vector3(-2.6f, 0, 0), 0.3f));
-                        openSequence.Append(doorTwo.DOLocalMove(new Vector3(8, 0, -1), 0.3f));
+                        openSequence.Append(doorOne.DOLocalMove(door1, 0.3f));
+                        openSequence.Append(doorTwo.DOLocalMove(door2, 0.3f));
                         openSequence.OnComplete(() => isOpen = true);
                         bc.isTrigger = true;
                         isUnlocked = true;
@@ -54,8 +57,8 @@ namespace CS
             }
             else
             {
-                openSequence.Append(doorOne.DOLocalMove(new Vector3(-2.6f, 0, 0), 0.3f));
-                openSequence.Append(doorTwo.DOLocalMove(new Vector3(8, 0, -1), 0.3f));
+                openSequence.Append(doorOne.DOLocalMove(door1, 0.3f));
+                openSequence.Append(doorTwo.DOLocalMove(door2, 0.3f));
                 bc.isTrigger = true;
                 openSequence.OnComplete(() => isOpen = true);
             }

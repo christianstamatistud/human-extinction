@@ -106,6 +106,11 @@ namespace CS
             }
         }
 
+        public void ChrossHair(bool c)
+        {
+            uiCrossHair.ToggleCrossHair(c);
+        }
+
 
 
 

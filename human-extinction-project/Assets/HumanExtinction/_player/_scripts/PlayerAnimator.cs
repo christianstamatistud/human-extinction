@@ -64,12 +64,14 @@ namespace CS
             cameraTransform.DOLocalRotate(Vector3.zero, 1).OnComplete(() => EnablePlayerScripts());
             cameraTransform.localScale = Vector3.one;
 
+            anim.SetBool("allowToMove", true);
+
 
         }
 
         void EnablePlayerScripts()
         {
-            anim.SetBool("doOnce", true);
+            anim.SetBool("standUp", true);
             fps.enabled = true;
             cameraController.enabled = true;
         }

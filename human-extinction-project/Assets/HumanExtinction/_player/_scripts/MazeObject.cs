@@ -10,14 +10,13 @@ namespace CS
     {
         [BoxGroup("Trigger")] public Trigger onMazeComplete;
 
-        [BoxGroup("Player")] public bool isInteracting;
 
 
         private Transform mazePlayer;
         [BoxGroup("Player")] public Transform startPosition;
         [BoxGroup("Player")] public float animationSpeed = 1;
         [BoxGroup("Player")] public Ease easeType;
-        
+        public bool isInteractive;
 
         private Transform pointsRoot;
         private SphereCollider[] colliders;
@@ -25,7 +24,7 @@ namespace CS
 
         [BoxGroup("Display")] public Renderer displayMesh;
         [BoxGroup("Display")] public SpriteRenderer mazeSprite;
-
+        InputHandler ih;
 
         //timer
         [BoxGroup("Timer")] public float startTime;
@@ -46,7 +45,6 @@ namespace CS
 
         private void OnEnable()
         {
-            StartPlayer();
             mp.wrongPath += WrongPath;
             mp.playerStart += GameStarted;
             mp.mazeComplete += MazeComplete;
@@ -63,6 +61,7 @@ namespace CS
         void GetReferences()
         {
             GetColliders();
+            ih = FindObjectOfType<InputHandler>();
 
             #region Player References
             currentTime = startTime;
@@ -82,8 +81,9 @@ namespace CS
         }
 
         //initialize
-        void StartPlayer()
+        public void StartPlayer()
         {
+
             //set position, scale
             mazePlayer.transform.position = startPosition.transform.position;
             mazePlayer.transform.localScale = Vector3.zero;
@@ -134,11 +134,11 @@ namespace CS
         void PlayerReset()
         {
             //trail
-            mazePlayer.DOScale(Vector3.zero, animationSpeed).SetEase(easeType).OnComplete(()=> Res());
+            mazePlayer.DOScale(Vector3.zero, animationSpeed).SetEase(easeType).OnComplete(()=> PlayerResDelay());
             EnableColliders();
 
         }
-        void Res()
+        void PlayerResDelay()
         {
             mazePlayer.gameObject.SetActive(false);
             playerTrail.material.color = initialColor;
@@ -167,6 +167,37 @@ namespace CS
             transform.gameObject.SetActive(false);
         }
 
+        public void QuitInteraction()
+        {
+            GameManager.Instance.disableInput = false;
+            mp.transform.gameObject.SetActive(false);
+
+            playerTrail.material.color = initialColor;
+            playerTrail.time = 0;
+
+            // reset directions
+            mp.currentDirection = MazePlayer.CurrentDirection.start;
+            mp.lockedLeft = false;
+            mp.lockedRight = false;
+            mp.lockedDown = false;
+            mp.lockedUp = false;
+
+            mp.playerMovedFirstTime = false;
+
+            foreach (Collider c in colliders)
+            {
+                c.enabled = true;
+
+                if(c.GetComponentInChildren<Point>().getSprite == true)
+                {
+                    SpriteRenderer s;
+                    s = c.GetComponentInChildren<SpriteRenderer>();
+                    s.gameObject.SetActive(false);
+                }
+            }
+
+        }
+
         public void EnableColliders()
         {
             foreach (SphereCollider cs in colliders)
@@ -183,6 +214,9 @@ namespace CS
             mazeSprite.gameObject.SetActive(false);
             onMazeComplete.Run();
             ResetOnComplete();
+            ih.ResetInput();
+            GameManager.Instance.disableInput = false;
+
         }
 
         public void WrongPath()
