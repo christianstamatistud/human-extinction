@@ -29,7 +29,7 @@ namespace CS
         [BoxGroup("Point Sprite")] public float fade = 0;
         [BoxGroup("Point Sprite")] public Vector3 size;
 
-        public SpriteRenderer sprite;
+        public SpriteRenderer spriteObject;
         public Color startColor;
 
 
@@ -38,7 +38,8 @@ namespace CS
         {
             if (getSprite)
             {
-                sprite.transform.localScale = Vector3.zero;
+                spriteObject = transform.Find("sprite").GetComponent<SpriteRenderer>();
+                spriteObject.transform.localScale = Vector3.zero;
             }
         }
 
@@ -46,24 +47,24 @@ namespace CS
 
         public void LoopCircle()
         {
-            sprite.color = startColor;
-            sprite.transform.localScale = Vector3.zero;
-            sprite.gameObject.SetActive(true);
+            spriteObject.color = startColor;
+            spriteObject.transform.localScale = Vector3.zero;
+            spriteObject.gameObject.SetActive(true);
 
             if (!endPoint)
             {
                 loopSequence.Kill(true);
                 loopSequence = DOTween.Sequence();
-                loopSequence.Append(sprite.transform.DOScale(size, animSpeed));
-                loopSequence.Append(sprite.DOFade(fade, animSpeed));
+                loopSequence.Append(spriteObject.transform.DOScale(size, animSpeed));
+                loopSequence.Append(spriteObject.DOFade(fade, animSpeed));
                 loopSequence.SetLoops(-1);
             }
             else
             {
                 loopSequence.Kill(true);
                 loopSequence = DOTween.Sequence();
-                loopSequence.Append(sprite.transform.DOScale(size, animSpeed));
-                loopSequence.Append(sprite.DOFade(fade, animSpeed));
+                loopSequence.Append(spriteObject.transform.DOScale(size, animSpeed));
+                loopSequence.Append(spriteObject.DOFade(fade, animSpeed));
                 loopSequence.SetLoops(-1);
             }
 
@@ -74,8 +75,8 @@ namespace CS
         {
             loopSequence.Kill(true);
             loopSequence = DOTween.Sequence();
-            loopSequence.Append(sprite.transform.DOScale(size, 0.2f));
-            loopSequence.Append(sprite.DOFade(1f, 0.2f));
+            loopSequence.Append(spriteObject.transform.DOScale(size, 0.2f));
+            loopSequence.Append(spriteObject.DOFade(1f, 0.2f));
             loopSequence.Play();
         }
 

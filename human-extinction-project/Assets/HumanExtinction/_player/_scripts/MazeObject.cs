@@ -15,6 +15,7 @@ namespace CS
 
         public Transform mazePlayer;
         [BoxGroup("Player")] public Transform startPosition;
+        [BoxGroup("Player")] public Transform endPosition;
         [BoxGroup("Player")] public float animationSpeed = 1;
         [BoxGroup("Player")] public Ease easeType;
         [BoxGroup("Player")] public bool isInteractive;
@@ -37,6 +38,7 @@ namespace CS
         public MazePlayer mp;
         Vector3 initialScale;
         Color initialColor;
+        Point startP;
        
 
         private void Awake()
@@ -61,6 +63,11 @@ namespace CS
 
         private void Update()
         {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                StartPlayer();
+                isInteractive = true;
+            }
             PlayerInactiveTimer();
         }
 
@@ -70,6 +77,7 @@ namespace CS
             ih = FindObjectOfType<InputHandler>();
 
             #region Player References
+            startP = startPosition.transform.GetComponent<Point>();
             currentTime = startTime;
             initialScale = mazePlayer.transform.localScale;
             playerTrail = mazePlayer.transform.Find("trail").GetComponent<TrailRenderer>();
@@ -87,14 +95,6 @@ namespace CS
         }
 
 
-        private void FixedUpdate()
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                StartPlayer();
-                isInteractive = true;
-            }
-        }
         //initialize
         public void StartPlayer()
         {
@@ -103,29 +103,21 @@ namespace CS
             mazePlayer.transform.position = startPosition.transform.position;
             mazePlayer.transform.localScale = Vector3.zero;
 
-            //get first poin info
-            Point p;
-            p = startPosition.transform.GetComponent<Point>();
-            mp.lockedUp = p.lockUp;
-            mp.lockedDown = p.lockDown;
-            mp.lockedRight = p.lockRight;
-            mp.lockedLeft = p.lockLeft;
-            p.transform.GetComponent<SphereCollider>().enabled = false;
-            p.LoopCircle();
 
-            foreach (SphereCollider c in colliders)
-            {
-                Point pt;
-                pt = c.GetComponent<Point>();
-                if (pt.endPoint)
-                {
-                    pt.LoopCircle();
-                }
-            }
+            mp.lockedUp = startP.lockUp;
+            mp.lockedDown = startP.lockDown;
+            mp.lockedRight = startP.lockRight;
+            mp.lockedLeft = startP.lockLeft;
+            startP.transform.GetComponent<SphereCollider>().enabled = false;
+            startP.LoopCircle();
+
+
+            endPosition.transform.GetComponent<Point>().LoopCircle();
+
+            mazePlayer.transform.gameObject.SetActive(true);
 
             //start looping circle
 
-            mazePlayer.transform.gameObject.SetActive(true);
 
             //set animation
             mazePlayer.DOScale(initialScale, animationSpeed).SetEase(easeType).OnComplete(()=> playerTrail.time = 1000);
@@ -245,7 +237,7 @@ namespace CS
 
             Point p;
             p = startPosition.transform.GetComponent<Point>();
-            p.sprite.color = Color.red;
+            p.spriteObject.color = Color.red;
 
             //set color start point
 

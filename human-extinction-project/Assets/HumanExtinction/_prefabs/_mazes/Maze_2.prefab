@@ -60,7 +60,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &2056474993025668864
 SphereCollider:
@@ -151,7 +151,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &6599451805479841626
 SphereCollider:
@@ -242,7 +242,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &5698223563732332821
 SphereCollider:
@@ -333,7 +333,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &3292969742395910613
 SphereCollider:
@@ -424,7 +424,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &3430253201861182264
 SphereCollider:
@@ -515,7 +515,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &1485678306496676135
 SphereCollider:
@@ -606,7 +606,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &47827982812271843
 SphereCollider:
@@ -697,7 +697,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &7764925726470410683
 SphereCollider:
@@ -788,7 +788,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &1465553655514966062
 SphereCollider:
@@ -847,8 +847,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1574637344427062058}
   - {fileID: 8644205617354029096}
+  - {fileID: 1574637344427062058}
   - {fileID: 1574637344550870996}
   - {fileID: 1574637343900753191}
   m_Father: {fileID: 2444514430998964201}
@@ -871,6 +871,7 @@ MonoBehaviour:
   showSprite: {fileID: 2444514431227409929}
   mazePlayer: {fileID: 8644205617354029096}
   startPosition: {fileID: 1574637344515812141}
+  endPosition: {fileID: 1574637344603253900}
   animationSpeed: 0.2
   easeType: 2
   isInteractive: 0
@@ -1034,7 +1035,7 @@ Transform:
   - {fileID: 3524943980315839048}
   - {fileID: 5820767368236259365}
   m_Father: {fileID: 1574637343148199162}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1 &1574637344515812138
 GameObject:
@@ -1097,7 +1098,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 1.2, y: 1.2, z: 1.2}
-  sprite: {fileID: 2444514429948545146}
+  spriteObject: {fileID: 2444514429948545146}
   startColor: {r: 0.30588236, g: 0.5372549, b: 0.6313726, a: 1}
 --- !u!135 &1574637344515812143
 SphereCollider:
@@ -1270,7 +1271,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0.4, y: 0.4, z: 0.4}
-  sprite: {fileID: 2444514430024782021}
+  spriteObject: {fileID: 2444514430024782021}
   startColor: {r: 0.30588236, g: 0.5372549, b: 0.6313726, a: 1}
 --- !u!135 &1574637344603253889
 SphereCollider:
@@ -1361,7 +1362,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &7211258722879095086
 SphereCollider:
@@ -1452,7 +1453,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &7209596308140181708
 SphereCollider:
@@ -1543,7 +1544,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &7087962780966482449
 SphereCollider:
@@ -2204,7 +2205,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &7741098771964489950
 SphereCollider:
@@ -2295,7 +2296,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &4315068630094615900
 SphereCollider:
@@ -2386,7 +2387,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &5590303005361694407
 SphereCollider:
@@ -2477,7 +2478,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &3594843135390360396
 SphereCollider:
@@ -2568,7 +2569,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &4592480800993988987
 SphereCollider:
@@ -2659,7 +2660,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &6420019388137019988
 SphereCollider:
@@ -2750,7 +2751,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &3117131447397217174
 SphereCollider:
@@ -2841,7 +2842,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &762898325268162233
 SphereCollider:
@@ -2932,7 +2933,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &6598298937268874201
 SphereCollider:
@@ -3023,7 +3024,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &684730982905993496
 SphereCollider:
@@ -3114,7 +3115,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &3394788008191712447
 SphereCollider:
@@ -3205,7 +3206,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &7678854830330915180
 SphereCollider:
@@ -3296,7 +3297,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &7583367769411377580
 SphereCollider:
@@ -3387,7 +3388,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &5363398918725747192
 SphereCollider:
@@ -3478,7 +3479,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &2671158474944539730
 SphereCollider:
@@ -3569,7 +3570,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &7266887897862356721
 SphereCollider:
@@ -3660,7 +3661,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &7373991429040739944
 SphereCollider:
@@ -3751,7 +3752,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &4221334813570409515
 SphereCollider:
@@ -3842,7 +3843,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &8430656562270560947
 SphereCollider:
@@ -3933,7 +3934,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &8894417974737521656
 SphereCollider:
@@ -4024,7 +4025,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &997394627677743792
 SphereCollider:
@@ -4115,7 +4116,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &4892733549181479558
 SphereCollider:
@@ -4206,7 +4207,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &8834597845341432773
 SphereCollider:
@@ -4297,7 +4298,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &5893674584833256308
 SphereCollider:
@@ -4388,7 +4389,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &4296013786026261104
 SphereCollider:
@@ -4479,7 +4480,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &1674754260683940889
 SphereCollider:
@@ -4570,7 +4571,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &1134914726729340710
 SphereCollider:
@@ -4661,7 +4662,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &5440748464225832355
 SphereCollider:
@@ -4752,7 +4753,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &6493486234895290218
 SphereCollider:
@@ -4843,7 +4844,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &8705834053180517940
 SphereCollider:
@@ -4934,7 +4935,7 @@ MonoBehaviour:
   setLoop: -1
   fade: 0
   size: {x: 0, y: 0, z: 0}
-  sprite: {fileID: 0}
+  spriteObject: {fileID: 0}
   startColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &8332437557244442569
 SphereCollider:
@@ -4985,12 +4986,12 @@ PrefabInstance:
     - target: {fileID: 7074134013470878594, guid: 503c6dd6a99b3c0468e1d3aeb4da68fb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.100115314
+      value: -0.12473929
       objectReference: {fileID: 0}
     - target: {fileID: 7074134013470878594, guid: 503c6dd6a99b3c0468e1d3aeb4da68fb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.14276075
+      value: 0.09488492
       objectReference: {fileID: 0}
     - target: {fileID: 7074134013470878594, guid: 503c6dd6a99b3c0468e1d3aeb4da68fb,
         type: 3}
@@ -5000,27 +5001,27 @@ PrefabInstance:
     - target: {fileID: 7074134013470878594, guid: 503c6dd6a99b3c0468e1d3aeb4da68fb,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.000000029802319
       objectReference: {fileID: 0}
     - target: {fileID: 7074134013470878594, guid: 503c6dd6a99b3c0468e1d3aeb4da68fb,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.000000029802319
       objectReference: {fileID: 0}
     - target: {fileID: 7074134013470878594, guid: 503c6dd6a99b3c0468e1d3aeb4da68fb,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.7071068
+      value: -0.70710677
       objectReference: {fileID: 0}
     - target: {fileID: 7074134013470878594, guid: 503c6dd6a99b3c0468e1d3aeb4da68fb,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.7071069
       objectReference: {fileID: 0}
     - target: {fileID: 7074134013470878594, guid: 503c6dd6a99b3c0468e1d3aeb4da68fb,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7074134013470878594, guid: 503c6dd6a99b3c0468e1d3aeb4da68fb,
         type: 3}
@@ -5040,17 +5041,17 @@ PrefabInstance:
     - target: {fileID: 7074134013470878594, guid: 503c6dd6a99b3c0468e1d3aeb4da68fb,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.030000018
+      value: 0.030000022
       objectReference: {fileID: 0}
     - target: {fileID: 7074134013470878594, guid: 503c6dd6a99b3c0468e1d3aeb4da68fb,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.030000009
+      value: 0.030000012
       objectReference: {fileID: 0}
     - target: {fileID: 7074134013470878594, guid: 503c6dd6a99b3c0468e1d3aeb4da68fb,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.03000001
+      value: 0.030000016
       objectReference: {fileID: 0}
     - target: {fileID: 7074134013470878716, guid: 503c6dd6a99b3c0468e1d3aeb4da68fb,
         type: 3}
@@ -5079,6 +5080,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 503c6dd6a99b3c0468e1d3aeb4da68fb, type: 3}
+--- !u!4 &8644205617354029096 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7074134013470878594, guid: 503c6dd6a99b3c0468e1d3aeb4da68fb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1574637344309515178}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8644205617354029097 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7074134013470878595, guid: 503c6dd6a99b3c0468e1d3aeb4da68fb,
@@ -5091,9 +5098,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68b680289332fd84a8fcb667bd1d2efe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &8644205617354029096 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7074134013470878594, guid: 503c6dd6a99b3c0468e1d3aeb4da68fb,
-    type: 3}
-  m_PrefabInstance: {fileID: 1574637344309515178}
-  m_PrefabAsset: {fileID: 0}
