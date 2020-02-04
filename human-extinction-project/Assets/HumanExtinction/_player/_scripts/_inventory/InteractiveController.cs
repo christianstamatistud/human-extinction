@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 namespace CS
 {
@@ -9,7 +10,7 @@ namespace CS
         private Inventory inventory;
         private UI_Inventory uiInventory;
         private InputHandler inputHandler;
-
+        
 
 
         //Ray
@@ -24,9 +25,6 @@ namespace CS
         public Renderer[] rs;
         public Material hoverMaterial;
         public Material lastMaterial;
-
-
-
 
         private void Awake()
         {
@@ -142,6 +140,25 @@ namespace CS
                     }
 
                 }
+
+                //interact with maze
+                if (hit.transform.GetComponent<MazeObject>())
+                {
+                    if (Input.GetKeyDown(KeyCode.Mouse0))
+                    {
+                        MazeObject mo;
+                        mo = hit.transform.GetComponent<MazeObject>();
+
+                        if(mo!=null)
+                        GameManager.Instance.disableInput = true;
+
+
+                        //mainCamera.enabled = false;
+
+
+                    }
+
+                }
             }
             else
             {
@@ -175,7 +192,10 @@ namespace CS
 
         }
 
-       
+       void MazeInteraction()
+        {
+
+        }
 
 
         private void OnDrawGizmosSelected()

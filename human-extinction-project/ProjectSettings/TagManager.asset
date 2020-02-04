@@ -7,6 +7,7 @@ TagManager:
   - Managers
   - PostProcess
   - ItemHolder
+  - MenuCamera
   layers:
   - Default
   - TransparentFX

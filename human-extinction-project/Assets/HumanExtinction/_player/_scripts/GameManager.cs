@@ -12,6 +12,8 @@ namespace CS
 
         [BoxGroup("Game Manager")][ReadOnly] public bool lockCursor;
         [BoxGroup("Game Manager")] [ReadOnly] public bool disableInput;
+        [BoxGroup("Game Manager")] [ReadOnly] public bool onMainMenu;
+        [BoxGroup("Game Manager")] [ReadOnly] public bool solvingMaze;
 
         //Player Ui
         [BoxGroup("Game Manager")] [ReadOnly] public bool toggleInventory;
@@ -21,6 +23,7 @@ namespace CS
         //Pause Menu
         [BoxGroup("Game Manager")] [ReadOnly] public bool pauseGame;
         UI_PauseMenu uiPauseGame;
+        [HideInInspector]public InteractiveController interactiveController;
 
         private void Awake()
         {
@@ -31,10 +34,10 @@ namespace CS
         void SetReferences()
         {
             Instance = this;
-            ToggleCursorState();
             uiInventory = FindObjectOfType<UI_Inventory>();
             uiPauseGame = FindObjectOfType<UI_PauseMenu>();
             uiCrossHair = FindObjectOfType<UI_CrossHair>();
+            onMainMenu = true;
 
         }
 

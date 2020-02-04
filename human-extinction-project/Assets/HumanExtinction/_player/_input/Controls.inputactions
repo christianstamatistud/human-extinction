@@ -6,28 +6,20 @@
             "id": "34b439f2-37aa-4b81-b27c-32ab1955d99c",
             "actions": [
                 {
-                    "name": "Jump",
-                    "type": "Button",
-                    "id": "fe3463b2-786f-461b-8429-ce6c7ac6d3a2",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press(behavior=2)"
-                },
-                {
-                    "name": "Run",
+                    "name": "RunPressed",
                     "type": "Button",
                     "id": "b767d4e7-acfe-4dfa-b86e-7c1319d85ee8",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=2)"
+                    "interactions": "Press"
                 },
                 {
-                    "name": "Crouch",
+                    "name": "RunReleased",
                     "type": "Button",
-                    "id": "52d08b4d-e427-4a2d-849b-049c1bb2746b",
+                    "id": "eeb3f5f5-7a90-48e3-bb58-ab81b8b102fb",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=2)"
+                    "interactions": "Press(behavior=1)"
                 },
                 {
                     "name": "Esc",
@@ -71,17 +63,6 @@
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "5d41bb27-77c9-470b-a6c5-18d67405cadf",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard and Mouse",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "WASD",
                     "id": "034d6e88-6550-4bc4-aea4-000d204acd8e",
@@ -210,18 +191,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard and Mouse",
-                    "action": "Run",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8c12c846-a3f5-49f9-bdce-07659028101f",
-                    "path": "<Keyboard>/leftCtrl",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard and Mouse",
-                    "action": "Crouch",
+                    "action": "RunPressed",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -255,6 +225,101 @@
                     "processors": "",
                     "groups": "Keyboard and Mouse",
                     "action": "ToggleInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "adaa3214-df4c-4859-9a2d-d2701a6ab66d",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "RunReleased",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "PlayerMaze",
+            "id": "fa91c1c9-c0a6-4698-ba83-ce4fa4a37c7b",
+            "actions": [
+                {
+                    "name": "OnUpAction",
+                    "type": "Button",
+                    "id": "fc60b9eb-e7fa-4f7c-92dc-cd439b88a43a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "OnDownAction",
+                    "type": "Button",
+                    "id": "96d9cd2b-7e4e-411b-bb11-4cf471d58ce8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "OnRightAction",
+                    "type": "Button",
+                    "id": "e36ca0fd-c4a9-42be-93f6-7a7aa9851b24",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "OnLeftAction",
+                    "type": "Button",
+                    "id": "58a50e86-7a6b-4e24-b46d-a67bf907f4e7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press"
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9f69a789-52ff-486c-8c0f-46e84c3c4a80",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "OnUpAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b1645112-3051-4718-b74b-3220fd0ae72d",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "OnDownAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3d40be7b-9a17-4720-8a38-c79d705455c5",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "OnRightAction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "305c5c19-8613-47e7-9d16-d927023a91b4",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "OnLeftAction",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
