@@ -13,11 +13,12 @@ namespace CS
         [BoxGroup("Trigger")] public GameObject showSprite;
 
 
-        private Transform mazePlayer;
+        public Transform mazePlayer;
         [BoxGroup("Player")] public Transform startPosition;
         [BoxGroup("Player")] public float animationSpeed = 1;
         [BoxGroup("Player")] public Ease easeType;
-        public bool isInteractive;
+        [BoxGroup("Player")] public bool isInteractive;
+        [BoxGroup("Player")] public bool autoStart;
         Transform mazeRoot;
 
         private Transform pointsRoot;
@@ -33,7 +34,7 @@ namespace CS
 
         //player ref
         TrailRenderer playerTrail;
-        MazePlayer mp;
+        public MazePlayer mp;
         Vector3 initialScale;
         Color initialColor;
        
@@ -70,12 +71,11 @@ namespace CS
 
             #region Player References
             currentTime = startTime;
-            mazePlayer = transform.Find("PlayerMaze").GetComponent<Transform>();
-            mp = mazePlayer.GetComponent<MazePlayer>();
             initialScale = mazePlayer.transform.localScale;
             playerTrail = mazePlayer.transform.Find("trail").GetComponent<TrailRenderer>();
             initialColor = playerTrail.material.color;
             mazeRoot = transform.root;
+
             #endregion
 
         }
@@ -86,6 +86,15 @@ namespace CS
             colliders = pointsRoot.GetComponentsInChildren<SphereCollider>();
         }
 
+
+        private void FixedUpdate()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                StartPlayer();
+                isInteractive = true;
+            }
+        }
         //initialize
         public void StartPlayer()
         {

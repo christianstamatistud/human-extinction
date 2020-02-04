@@ -9,7 +9,6 @@ namespace CS
     {
         [BoxGroup("Function")]public string runFunction;
 
-
         [BoxGroup("Actions")] public bool doorOpen;
 
         [BoxGroup("Connection")] public Transform output;
@@ -23,6 +22,7 @@ namespace CS
         {
             if (doorOpen)
             {
+                if(output!=null)
                 d = output.GetComponent<Door>();
             }
 
