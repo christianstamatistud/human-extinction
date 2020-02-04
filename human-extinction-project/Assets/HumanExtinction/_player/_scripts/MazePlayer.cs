@@ -190,7 +190,7 @@ namespace CS
 
         public void OnOnUpAction(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            if (context.performed && !GameManager.Instance.onMainMenu)
             {
                 if(!playerMovedFirstTime && playerStart != null) 
                 playerStart();
@@ -204,7 +204,7 @@ namespace CS
 
         public void OnOnDownAction(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            if (context.performed && !GameManager.Instance.onMainMenu)
             {
                 if(!playerMovedFirstTime && playerStart != null)
                 playerStart();
@@ -218,7 +218,7 @@ namespace CS
 
         public void OnOnRightAction(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            if (context.performed && !GameManager.Instance.onMainMenu)
             {
                 if (!playerMovedFirstTime && playerStart!=null)
                     playerStart();
@@ -232,7 +232,7 @@ namespace CS
 
         public void OnOnLeftAction(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            if (context.performed && !GameManager.Instance.onMainMenu)
             {
                 if (!playerMovedFirstTime && playerStart != null)
                     playerStart();
@@ -246,7 +246,7 @@ namespace CS
 
         public void OnOnQuitInteraction(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            if (context.performed && !GameManager.Instance.onMainMenu)
             {
                 if(mo.isInteractive)
                 {

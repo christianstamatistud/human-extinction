@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
 
 namespace CS
 {
@@ -10,6 +11,7 @@ namespace CS
         private Inventory inventory;
         private UI_Inventory uiInventory;
         private InputHandler inputHandler;
+
         
 
 
@@ -96,7 +98,6 @@ namespace CS
             {
 
                 //ObjectSelection(hit);
-                print(hit.transform.name);
 
                 // Interac with doors
                 if (hit.transform.GetComponent<Door>())

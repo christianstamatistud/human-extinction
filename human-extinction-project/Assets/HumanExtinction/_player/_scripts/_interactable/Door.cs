@@ -52,7 +52,7 @@ namespace CS
                     }
 
                 }
-                print("no Key");
+                GameManager.Instance.DisplayInfo("The door is locked.");
 
             }
             else

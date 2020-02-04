@@ -433,7 +433,7 @@ namespace CS
                 {
                     ""name"": """",
                     ""id"": ""a9f31255-984d-436b-9e18-3812205d6439"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse"",
@@ -620,6 +620,55 @@ namespace CS
                     ""action"": ""OnQuitInteraction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3c276a05-a8f2-4dc0-9580-b08903579bf1"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""OnQuitInteraction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""MainMenu"",
+            ""id"": ""2eb683fe-d88c-4d10-8cd6-c3a2079565eb"",
+            ""actions"": [
+                {
+                    ""name"": ""StartGame"",
+                    ""type"": ""Button"",
+                    ""id"": ""e15f07dd-8e6b-4325-b433-b3c75185e7f8"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Hold(duration=3)""
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""3c28bf22-9f32-4970-9e35-dd80924d0df7"",
+                    ""path"": ""<DualShockGamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
+                    ""action"": ""StartGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ba3bbe50-dd0c-4a5a-b822-dc96b1257e1a"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""StartGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -653,6 +702,9 @@ namespace CS
             m_PlayerMaze_OnRightAction = m_PlayerMaze.FindAction("OnRightAction", throwIfNotFound: true);
             m_PlayerMaze_OnLeftAction = m_PlayerMaze.FindAction("OnLeftAction", throwIfNotFound: true);
             m_PlayerMaze_OnQuitInteraction = m_PlayerMaze.FindAction("OnQuitInteraction", throwIfNotFound: true);
+            // MainMenu
+            m_MainMenu = asset.FindActionMap("MainMenu", throwIfNotFound: true);
+            m_MainMenu_StartGame = m_MainMenu.FindAction("StartGame", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -844,6 +896,39 @@ namespace CS
             }
         }
         public PlayerMazeActions @PlayerMaze => new PlayerMazeActions(this);
+
+        // MainMenu
+        private readonly InputActionMap m_MainMenu;
+        private IMainMenuActions m_MainMenuActionsCallbackInterface;
+        private readonly InputAction m_MainMenu_StartGame;
+        public struct MainMenuActions
+        {
+            private @Controls m_Wrapper;
+            public MainMenuActions(@Controls wrapper) { m_Wrapper = wrapper; }
+            public InputAction @StartGame => m_Wrapper.m_MainMenu_StartGame;
+            public InputActionMap Get() { return m_Wrapper.m_MainMenu; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(MainMenuActions set) { return set.Get(); }
+            public void SetCallbacks(IMainMenuActions instance)
+            {
+                if (m_Wrapper.m_MainMenuActionsCallbackInterface != null)
+                {
+                    @StartGame.started -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnStartGame;
+                    @StartGame.performed -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnStartGame;
+                    @StartGame.canceled -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnStartGame;
+                }
+                m_Wrapper.m_MainMenuActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @StartGame.started += instance.OnStartGame;
+                    @StartGame.performed += instance.OnStartGame;
+                    @StartGame.canceled += instance.OnStartGame;
+                }
+            }
+        }
+        public MainMenuActions @MainMenu => new MainMenuActions(this);
         private int m_KeyboardandMouseSchemeIndex = -1;
         public InputControlScheme KeyboardandMouseScheme
         {
@@ -879,6 +964,10 @@ namespace CS
             void OnOnRightAction(InputAction.CallbackContext context);
             void OnOnLeftAction(InputAction.CallbackContext context);
             void OnOnQuitInteraction(InputAction.CallbackContext context);
+        }
+        public interface IMainMenuActions
+        {
+            void OnStartGame(InputAction.CallbackContext context);
         }
     }
 }

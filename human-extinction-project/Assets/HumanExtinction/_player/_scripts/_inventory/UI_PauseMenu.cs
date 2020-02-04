@@ -11,6 +11,7 @@ namespace CS
     {
         Transform background;
         Transform menuPanel;
+        InputHandler inputHandler;
 
         Image backgroundImage;
 
@@ -26,6 +27,7 @@ namespace CS
             backgroundImage = background.GetComponent<Image>();
             menuPanel = transform.Find("menu_panel").GetComponent<Transform>();
             menuPanel.localScale = Vector3.zero;
+            inputHandler = FindObjectOfType<InputHandler>();
 
         }
 
@@ -53,6 +55,7 @@ namespace CS
                 closeSequence.OnStart(() => animationPlaying = true).OnComplete(() => EndCloseAnimation());
 
             }
+            inputHandler.ResetInput();
 
 
 

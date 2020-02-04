@@ -9,7 +9,8 @@ namespace CS
     public class MazeObject : MonoBehaviour
     {
         [BoxGroup("Trigger")] public Trigger onMazeComplete;
-
+        [BoxGroup("Trigger")] public bool openDoor;
+        [BoxGroup("Trigger")] public GameObject showSprite;
 
 
         private Transform mazePlayer;
@@ -17,12 +18,11 @@ namespace CS
         [BoxGroup("Player")] public float animationSpeed = 1;
         [BoxGroup("Player")] public Ease easeType;
         public bool isInteractive;
+        Transform mazeRoot;
 
         private Transform pointsRoot;
         private SphereCollider[] colliders;
-        private Sprite[] sprites;
 
-        [BoxGroup("Display")] public Renderer displayMesh;
         [BoxGroup("Display")] public SpriteRenderer mazeSprite;
         InputHandler ih;
 
@@ -58,6 +58,11 @@ namespace CS
 
         }
 
+        private void Update()
+        {
+            PlayerInactiveTimer();
+        }
+
         void GetReferences()
         {
             GetColliders();
@@ -70,6 +75,7 @@ namespace CS
             initialScale = mazePlayer.transform.localScale;
             playerTrail = mazePlayer.transform.Find("trail").GetComponent<TrailRenderer>();
             initialColor = playerTrail.material.color;
+            mazeRoot = transform.root;
             #endregion
 
         }
@@ -209,13 +215,17 @@ namespace CS
 
         public void MazeComplete()
         {
+            
             playerTrail.material.color = Color.green;
-            displayMesh.materials[2].color = Color.green;
             mazeSprite.gameObject.SetActive(false);
             onMazeComplete.Run();
             ResetOnComplete();
             ih.ResetInput();
             GameManager.Instance.disableInput = false;
+            if(openDoor)
+            Destroy(mazeRoot.gameObject);
+            mazeRoot.transform.Find("MazeDefault").GetComponent<Transform>().gameObject.SetActive(false);
+            showSprite.SetActive(true);
 
         }
 
@@ -233,33 +243,33 @@ namespace CS
 
         }
 
-        //void PlayerInactiveTimer()
-        //{
+        void PlayerInactiveTimer()
+        {
 
-        //    if (currentDirection == CurrentDirection.idle)
-        //    {
-        //        isRunning = true;
+            if (mp.currentDirection == MazePlayer.CurrentDirection.idle)
+            {
+                isRunning = true;
 
-        //    }
-        //    else
-        //    {
-        //        currentTime = startTime;
-        //        isRunning = false;
-        //    }
+            }
+            else
+            {
+                currentTime = startTime;
+                isRunning = false;
+            }
 
-        //    if (isRunning)
-        //    {
-        //        currentTime = currentTime - 1 * Time.deltaTime;
-        //        if (currentTime <= 0)
-        //        {
-        //            currentTime = startTime;
-        //            ResetGame();
-        //            isRunning = false;
-        //            print("timeExpired");
-        //        }
-        //    }
+            if (isRunning)
+            {
+                currentTime = currentTime - 1 * Time.deltaTime;
+                if (currentTime <= 0)
+                {
+                    currentTime = startTime;
+                    PlayerReset();
+                    isRunning = false;
+                    print("timeExpired");
+                }
+            }
 
-        //}
+        }
 
 
 

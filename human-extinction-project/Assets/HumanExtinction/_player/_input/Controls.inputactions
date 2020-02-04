@@ -418,7 +418,7 @@
                 {
                     "name": "",
                     "id": "a9f31255-984d-436b-9e18-3812205d6439",
-                    "path": "<Keyboard>/q",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard and Mouse",
@@ -603,6 +603,55 @@
                     "processors": "",
                     "groups": "Joystick",
                     "action": "OnQuitInteraction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3c276a05-a8f2-4dc0-9580-b08903579bf1",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "OnQuitInteraction",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "MainMenu",
+            "id": "2eb683fe-d88c-4d10-8cd6-c3a2079565eb",
+            "actions": [
+                {
+                    "name": "StartGame",
+                    "type": "Button",
+                    "id": "e15f07dd-8e6b-4325-b433-b3c75185e7f8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Hold(duration=3)"
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "3c28bf22-9f32-4970-9e35-dd80924d0df7",
+                    "path": "<DualShockGamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Joystick",
+                    "action": "StartGame",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ba3bbe50-dd0c-4a5a-b822-dc96b1257e1a",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard and Mouse",
+                    "action": "StartGame",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
