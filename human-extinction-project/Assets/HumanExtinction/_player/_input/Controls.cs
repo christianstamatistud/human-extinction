@@ -189,6 +189,116 @@ namespace CS
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""Joystick"",
+                    ""id"": ""e725cfee-8bb6-421a-b7c9-fa482c7c857b"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""9067e20f-ea38-4459-bb49-45d26f6cdbbe"",
+                    ""path"": ""<DualShockGamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""9add1f3d-9e48-447f-bb38-7a699c3fee2c"",
+                    ""path"": ""<DualShockGamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""e19dcb3e-9b19-493e-9f66-269c57b033d3"",
+                    ""path"": ""<DualShockGamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""8fb862ec-5e6c-4d13-82f2-3eb27c5f2c62"",
+                    ""path"": ""<DualShockGamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Joystick"",
+                    ""id"": ""e204e7d8-7cd2-4638-bcb0-f8ad394ed69c"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""642565f7-9889-4e48-8962-8ea665b8a002"",
+                    ""path"": ""<DualShockGamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""81b122d0-35a3-4597-8618-a752ed09a2a6"",
+                    ""path"": ""<DualShockGamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""96ee5ab5-e63a-4ce9-8965-52a71527297b"",
+                    ""path"": ""<DualShockGamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""88987ccb-acfb-42ee-8afa-5064b8d11921"",
+                    ""path"": ""<DualShockGamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": """",
                     ""id"": ""3eda089e-78a6-4a16-a3e9-81c65370d1de"",
                     ""path"": ""<Mouse>/delta"",
@@ -200,12 +310,78 @@ namespace CS
                     ""isPartOfComposite"": false
                 },
                 {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""0afd0683-2945-4099-9c4e-3d2f27227670"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Mouse"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""6d6ae62e-8072-4228-9dee-cbee403a7eba"",
+                    ""path"": ""<DualShockGamepad>/rightStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
+                    ""action"": ""Mouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""1ac0c588-85d0-405e-b918-556d983f02b6"",
+                    ""path"": ""<DualShockGamepad>/rightStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
+                    ""action"": ""Mouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""abdf5dd0-5b9b-433a-b017-ed17d6b144cd"",
+                    ""path"": ""<DualShockGamepad>/rightStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
+                    ""action"": ""Mouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""0904de4e-0e8a-4cf3-80cd-dea3c792aa83"",
+                    ""path"": ""<DualShockGamepad>/rightStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
+                    ""action"": ""Mouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": """",
                     ""id"": ""6f765627-c790-47ec-9368-7e5df6ecd3a0"",
                     ""path"": ""<Keyboard>/leftShift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""RunPressed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""74ffe199-fecb-437e-a171-897214edc0f1"",
+                    ""path"": ""<DualShockGamepad>/leftStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
                     ""action"": ""RunPressed"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -223,6 +399,17 @@ namespace CS
                 },
                 {
                     ""name"": """",
+                    ""id"": ""6736746e-982e-475f-ad41-464e0256613b"",
+                    ""path"": ""<DualShockGamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
+                    ""action"": ""Esc"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""8ec71603-2f9b-4bbd-9316-5365fbdfea4b"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
@@ -234,11 +421,33 @@ namespace CS
                 },
                 {
                     ""name"": """",
+                    ""id"": ""1035764e-6023-4184-9163-45b4d61b78ca"",
+                    ""path"": ""<DualShockGamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""a9f31255-984d-436b-9e18-3812205d6439"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""ToggleInventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f774ca1d-bd11-425a-bdc5-42e9ef1e0781"",
+                    ""path"": ""<DualShockGamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
                     ""action"": ""ToggleInventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -250,6 +459,17 @@ namespace CS
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""RunReleased"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a9ab3805-b707-4037-8251-7fca36144919"",
+                    ""path"": ""<DualShockGamepad>/leftStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
                     ""action"": ""RunReleased"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -291,6 +511,14 @@ namespace CS
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""OnQuitInteraction"",
+                    ""type"": ""Button"",
+                    ""id"": ""fe047e05-31c7-4ec7-b2c7-ab82e4b0b036"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -301,6 +529,17 @@ namespace CS
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""OnUpAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fd0aeae1-2ffc-46b5-aeb0-8868071b37ec"",
+                    ""path"": ""<DualShockGamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
                     ""action"": ""OnUpAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -318,11 +557,33 @@ namespace CS
                 },
                 {
                     ""name"": """",
+                    ""id"": ""0acee80d-56d2-47f9-8738-c8071b2349e7"",
+                    ""path"": ""<DualShockGamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
+                    ""action"": ""OnDownAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""3d40be7b-9a17-4720-8a38-c79d705455c5"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""OnRightAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7fa00053-174a-44c3-add7-ca30f625df89"",
+                    ""path"": ""<DualShockGamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
                     ""action"": ""OnRightAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -337,6 +598,77 @@ namespace CS
                     ""action"": ""OnLeftAction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b8486b58-db66-467a-9f58-001e52ef6fd0"",
+                    ""path"": ""<DualShockGamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
+                    ""action"": ""OnLeftAction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e5d50dbb-a0f2-4771-8f19-3e73746b46df"",
+                    ""path"": ""<DualShockGamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
+                    ""action"": ""OnQuitInteraction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3c276a05-a8f2-4dc0-9580-b08903579bf1"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""OnQuitInteraction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""MainMenu"",
+            ""id"": ""2eb683fe-d88c-4d10-8cd6-c3a2079565eb"",
+            ""actions"": [
+                {
+                    ""name"": ""StartGame"",
+                    ""type"": ""Button"",
+                    ""id"": ""e15f07dd-8e6b-4325-b433-b3c75185e7f8"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Hold(duration=3)""
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""3c28bf22-9f32-4970-9e35-dd80924d0df7"",
+                    ""path"": ""<DualShockGamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joystick"",
+                    ""action"": ""StartGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ba3bbe50-dd0c-4a5a-b822-dc96b1257e1a"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""StartGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -345,6 +677,11 @@ namespace CS
         {
             ""name"": ""Keyboard and Mouse"",
             ""bindingGroup"": ""Keyboard and Mouse"",
+            ""devices"": []
+        },
+        {
+            ""name"": ""Joystick"",
+            ""bindingGroup"": ""Joystick"",
             ""devices"": []
         }
     ]
@@ -364,6 +701,10 @@ namespace CS
             m_PlayerMaze_OnDownAction = m_PlayerMaze.FindAction("OnDownAction", throwIfNotFound: true);
             m_PlayerMaze_OnRightAction = m_PlayerMaze.FindAction("OnRightAction", throwIfNotFound: true);
             m_PlayerMaze_OnLeftAction = m_PlayerMaze.FindAction("OnLeftAction", throwIfNotFound: true);
+            m_PlayerMaze_OnQuitInteraction = m_PlayerMaze.FindAction("OnQuitInteraction", throwIfNotFound: true);
+            // MainMenu
+            m_MainMenu = asset.FindActionMap("MainMenu", throwIfNotFound: true);
+            m_MainMenu_StartGame = m_MainMenu.FindAction("StartGame", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -498,6 +839,7 @@ namespace CS
         private readonly InputAction m_PlayerMaze_OnDownAction;
         private readonly InputAction m_PlayerMaze_OnRightAction;
         private readonly InputAction m_PlayerMaze_OnLeftAction;
+        private readonly InputAction m_PlayerMaze_OnQuitInteraction;
         public struct PlayerMazeActions
         {
             private @Controls m_Wrapper;
@@ -506,6 +848,7 @@ namespace CS
             public InputAction @OnDownAction => m_Wrapper.m_PlayerMaze_OnDownAction;
             public InputAction @OnRightAction => m_Wrapper.m_PlayerMaze_OnRightAction;
             public InputAction @OnLeftAction => m_Wrapper.m_PlayerMaze_OnLeftAction;
+            public InputAction @OnQuitInteraction => m_Wrapper.m_PlayerMaze_OnQuitInteraction;
             public InputActionMap Get() { return m_Wrapper.m_PlayerMaze; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -527,6 +870,9 @@ namespace CS
                     @OnLeftAction.started -= m_Wrapper.m_PlayerMazeActionsCallbackInterface.OnOnLeftAction;
                     @OnLeftAction.performed -= m_Wrapper.m_PlayerMazeActionsCallbackInterface.OnOnLeftAction;
                     @OnLeftAction.canceled -= m_Wrapper.m_PlayerMazeActionsCallbackInterface.OnOnLeftAction;
+                    @OnQuitInteraction.started -= m_Wrapper.m_PlayerMazeActionsCallbackInterface.OnOnQuitInteraction;
+                    @OnQuitInteraction.performed -= m_Wrapper.m_PlayerMazeActionsCallbackInterface.OnOnQuitInteraction;
+                    @OnQuitInteraction.canceled -= m_Wrapper.m_PlayerMazeActionsCallbackInterface.OnOnQuitInteraction;
                 }
                 m_Wrapper.m_PlayerMazeActionsCallbackInterface = instance;
                 if (instance != null)
@@ -543,10 +889,46 @@ namespace CS
                     @OnLeftAction.started += instance.OnOnLeftAction;
                     @OnLeftAction.performed += instance.OnOnLeftAction;
                     @OnLeftAction.canceled += instance.OnOnLeftAction;
+                    @OnQuitInteraction.started += instance.OnOnQuitInteraction;
+                    @OnQuitInteraction.performed += instance.OnOnQuitInteraction;
+                    @OnQuitInteraction.canceled += instance.OnOnQuitInteraction;
                 }
             }
         }
         public PlayerMazeActions @PlayerMaze => new PlayerMazeActions(this);
+
+        // MainMenu
+        private readonly InputActionMap m_MainMenu;
+        private IMainMenuActions m_MainMenuActionsCallbackInterface;
+        private readonly InputAction m_MainMenu_StartGame;
+        public struct MainMenuActions
+        {
+            private @Controls m_Wrapper;
+            public MainMenuActions(@Controls wrapper) { m_Wrapper = wrapper; }
+            public InputAction @StartGame => m_Wrapper.m_MainMenu_StartGame;
+            public InputActionMap Get() { return m_Wrapper.m_MainMenu; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(MainMenuActions set) { return set.Get(); }
+            public void SetCallbacks(IMainMenuActions instance)
+            {
+                if (m_Wrapper.m_MainMenuActionsCallbackInterface != null)
+                {
+                    @StartGame.started -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnStartGame;
+                    @StartGame.performed -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnStartGame;
+                    @StartGame.canceled -= m_Wrapper.m_MainMenuActionsCallbackInterface.OnStartGame;
+                }
+                m_Wrapper.m_MainMenuActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @StartGame.started += instance.OnStartGame;
+                    @StartGame.performed += instance.OnStartGame;
+                    @StartGame.canceled += instance.OnStartGame;
+                }
+            }
+        }
+        public MainMenuActions @MainMenu => new MainMenuActions(this);
         private int m_KeyboardandMouseSchemeIndex = -1;
         public InputControlScheme KeyboardandMouseScheme
         {
@@ -554,6 +936,15 @@ namespace CS
             {
                 if (m_KeyboardandMouseSchemeIndex == -1) m_KeyboardandMouseSchemeIndex = asset.FindControlSchemeIndex("Keyboard and Mouse");
                 return asset.controlSchemes[m_KeyboardandMouseSchemeIndex];
+            }
+        }
+        private int m_JoystickSchemeIndex = -1;
+        public InputControlScheme JoystickScheme
+        {
+            get
+            {
+                if (m_JoystickSchemeIndex == -1) m_JoystickSchemeIndex = asset.FindControlSchemeIndex("Joystick");
+                return asset.controlSchemes[m_JoystickSchemeIndex];
             }
         }
         public interface IPlayerControlsActions
@@ -572,6 +963,11 @@ namespace CS
             void OnOnDownAction(InputAction.CallbackContext context);
             void OnOnRightAction(InputAction.CallbackContext context);
             void OnOnLeftAction(InputAction.CallbackContext context);
+            void OnOnQuitInteraction(InputAction.CallbackContext context);
+        }
+        public interface IMainMenuActions
+        {
+            void OnStartGame(InputAction.CallbackContext context);
         }
     }
 }

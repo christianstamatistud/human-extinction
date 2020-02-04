@@ -66,7 +66,7 @@ namespace CS
 
         public void OnRunPressed(InputAction.CallbackContext context)
         {
-            if (!GameManager.Instance.pauseGame && !GameManager.Instance.disableInput)
+            if (!GameManager.Instance.pauseGame && !GameManager.Instance.disableInput && !GameManager.Instance.onMainMenu)
             {
                 isRunning = true;
             }
@@ -74,7 +74,7 @@ namespace CS
 
         public void OnRunReleased(InputAction.CallbackContext context)
         {
-            if (!GameManager.Instance.pauseGame && !GameManager.Instance.disableInput)
+            if (!GameManager.Instance.pauseGame && !GameManager.Instance.disableInput && !GameManager.Instance.onMainMenu)
             {
                 isRunning = false;
             }
@@ -84,7 +84,7 @@ namespace CS
 
         public void OnEsc(InputAction.CallbackContext context)
         {
-            if (context.performed && !GameManager.Instance.onMainMenu)
+            if (context.performed && !GameManager.Instance.onMainMenu && !GameManager.Instance.onMainMenu)
             {
                 GameManager.Instance.TogglePause();
             }
@@ -92,21 +92,21 @@ namespace CS
 
         public void OnMovement(InputAction.CallbackContext context)
         {
-            if (!GameManager.Instance.pauseGame && !GameManager.Instance.disableInput)
+            if (!GameManager.Instance.pauseGame && !GameManager.Instance.disableInput && !GameManager.Instance.onMainMenu)
                 m_movementVector = context.ReadValue<Vector2>();
 
         }
 
         public void OnMouse(InputAction.CallbackContext context)
         {
-            if(!GameManager.Instance.pauseGame && !GameManager.Instance.disableInput)
+            if(!GameManager.Instance.pauseGame && !GameManager.Instance.disableInput && !GameManager.Instance.onMainMenu)
                 m_mouseVector = context.ReadValue<Vector2>();
 
         }
 
         public void OnInteract(InputAction.CallbackContext context)
         {
-            if (context.performed && !GameManager.Instance.pauseGame && !GameManager.Instance.disableInput)
+            if (context.performed && !GameManager.Instance.pauseGame && !GameManager.Instance.disableInput && !GameManager.Instance.onMainMenu)
             {
                 //Call Interaction Event
                 playerInteract();
@@ -116,7 +116,7 @@ namespace CS
 
         public void OnToggleInventory(InputAction.CallbackContext context)
         {
-            if (context.performed && !GameManager.Instance.pauseGame)
+            if (context.performed && !GameManager.Instance.pauseGame && !GameManager.Instance.onMainMenu)
             {
                 ResetInput();
                 GameManager.Instance.ToggleCursorState();
@@ -155,7 +155,7 @@ namespace CS
                 //movementInputData.CrouchClicked = Input.GetKeyDown(KeyCode.LeftControl);
             }
 
-        void ResetInput()
+        public void ResetInput()
         {
             m_movementVector = Vector2.zero;
             m_mouseVector = Vector2.zero;

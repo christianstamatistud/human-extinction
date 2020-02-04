@@ -14,7 +14,7 @@ namespace CS
 
         private void Awake()
         {
-            image = GetComponent<Image>();
+            image = GetComponentInChildren<Image>();
         }
 
         public void ToggleCrossHair(bool activeState)
@@ -22,6 +22,6 @@ namespace CS
             image.enabled = activeState;
         }
     }
-
+    
 }
 

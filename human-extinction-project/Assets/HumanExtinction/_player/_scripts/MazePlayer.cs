@@ -24,7 +24,6 @@ namespace CS
         public event OnPlayerStart playerStart;
 
 
-
         public enum CurrentDirection
         {
             start,
@@ -52,10 +51,14 @@ namespace CS
         [BoxGroup("Direction")] [ReadOnly] public bool lockedDown;
 
 
+        MazeObject mo;
+
         private void Awake()
         {
             SetControls();
             rayOrigin = transform.Find("ray").GetComponent<Transform>();
+            mo = GetComponentInParent<MazeObject>();
+
         }
 
         void SetControls()
@@ -187,7 +190,7 @@ namespace CS
 
         public void OnOnUpAction(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            if (context.performed && !GameManager.Instance.onMainMenu)
             {
                 if(!playerMovedFirstTime && playerStart != null) 
                 playerStart();
@@ -201,7 +204,7 @@ namespace CS
 
         public void OnOnDownAction(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            if (context.performed && !GameManager.Instance.onMainMenu)
             {
                 if(!playerMovedFirstTime && playerStart != null)
                 playerStart();
@@ -215,7 +218,7 @@ namespace CS
 
         public void OnOnRightAction(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            if (context.performed && !GameManager.Instance.onMainMenu)
             {
                 if (!playerMovedFirstTime && playerStart!=null)
                     playerStart();
@@ -229,7 +232,7 @@ namespace CS
 
         public void OnOnLeftAction(InputAction.CallbackContext context)
         {
-            if (context.performed)
+            if (context.performed && !GameManager.Instance.onMainMenu)
             {
                 if (!playerMovedFirstTime && playerStart != null)
                     playerStart();
@@ -238,6 +241,19 @@ namespace CS
                 transform.eulerAngles = new Vector3(0, -90, 0);
                 if (!lockedLeft && currentDirection != CurrentDirection.moving)
                     CheckDirection();
+            }
+        }
+
+        public void OnOnQuitInteraction(InputAction.CallbackContext context)
+        {
+            if (context.performed && !GameManager.Instance.onMainMenu)
+            {
+                if(mo.isInteractive)
+                {
+                    print("quit");
+                    mo.QuitInteraction();
+                    mo.isInteractive = false;
+                }
             }
         }
     }

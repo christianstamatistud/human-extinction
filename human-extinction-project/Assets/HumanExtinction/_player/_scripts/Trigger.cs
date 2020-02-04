@@ -34,8 +34,11 @@ namespace CS
 
         public void Run()
         {
-            if(doorOpen)
-            d.Invoke(runFunction, 1f);
+            if (doorOpen)
+            {
+                d.isUnlocked = true;
+                d.Invoke(runFunction, 1f);
+            }
         }
 
 

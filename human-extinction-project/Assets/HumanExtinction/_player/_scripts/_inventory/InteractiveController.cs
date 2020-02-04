@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
 
 namespace CS
 {
@@ -10,6 +11,7 @@ namespace CS
         private Inventory inventory;
         private UI_Inventory uiInventory;
         private InputHandler inputHandler;
+
         
 
 
@@ -38,27 +40,21 @@ namespace CS
         private void OnEnable()
         {
             inputHandler.playerInteract += InventoryItemPickup;
+            inputHandler.playerInteract += CheckInteractableItems;
         }
 
         private void OnDisable()
         {
             inputHandler.playerInteract -= InventoryItemPickup;
+            inputHandler.playerInteract -= CheckInteractableItems;
 
         }
+
         private void Start()
         {
             uiInventory.SetInventory(inventory);
 
         }
-
-
-        private void Update()
-        {
-            if(!GameManager.Instance.disableInput)
-            CheckInteractableItems();
-        }
-
-
 
 
 
@@ -100,8 +96,8 @@ namespace CS
 
             if (hitSomething)
             {
+
                 //ObjectSelection(hit);
-                print(hit.transform.name);
 
                 // Interac with doors
                 if (hit.transform.GetComponent<Door>())
@@ -109,7 +105,7 @@ namespace CS
                     Door interaction;
                     interaction = hit.transform.GetComponent<Door>();
 
-                    if(interaction != null && Input.GetKeyDown(KeyCode.Mouse0))
+                    if(interaction != null)
                     {
                         interaction.OpenDoor();
                     }
@@ -118,10 +114,12 @@ namespace CS
                 //interact switcher
                 if (hit.transform.GetComponent<Switcher>())
                 {
-                    if (Input.GetKeyDown(KeyCode.Mouse0))
+                    Switcher sw;
+                    sw = hit.transform.GetComponent<Switcher>();
+
+                    if (sw !=null)
                     {
-                        Switcher sw;
-                        sw = hit.transform.GetComponent<Switcher>();
+
                         sw.SetLetter();
 
                     }
@@ -131,31 +129,29 @@ namespace CS
                 //if interact switcher manager
                 if (hit.transform.GetComponent<SwitchManager>())
                 {
-                    if (Input.GetKeyDown(KeyCode.Mouse0))
-                    {
+                    SwitchManager sm;
+                    sm = hit.transform.GetComponent<SwitchManager>();
 
-                        SwitchManager sm;
-                        sm = hit.transform.GetComponent<SwitchManager>();
+                    if (sm != null)
+                    {
                         sm.GuessWord();
                     }
 
                 }
 
                 //interact with maze
-                if (hit.transform.GetComponent<MazeObject>())
+                if (hit.transform.GetComponentInChildren<MazeObject>())
                 {
-                    if (Input.GetKeyDown(KeyCode.Mouse0))
+                    MazeObject mo;
+                    mo = hit.transform.GetComponentInChildren<MazeObject>();
+
+                    if (mo!=null)
                     {
-                        MazeObject mo;
-                        mo = hit.transform.GetComponent<MazeObject>();
-
-                        if(mo!=null)
                         GameManager.Instance.disableInput = true;
-
-
-                        //mainCamera.enabled = false;
-
-
+                        inputHandler.ResetInput();
+                        mo.StartPlayer();
+                        mo.isInteractive = true;
+                        print("start_player");
                     }
 
                 }
@@ -167,6 +163,8 @@ namespace CS
             }
 
         }
+
+
 
         void ObjectSelection(RaycastHit currentRay)
         {
@@ -192,10 +190,6 @@ namespace CS
 
         }
 
-       void MazeInteraction()
-        {
-
-        }
 
 
         private void OnDrawGizmosSelected()

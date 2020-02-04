@@ -60,6 +60,7 @@ namespace CS
             }
             else
             {
+                loopSequence.Kill(true);
                 loopSequence = DOTween.Sequence();
                 loopSequence.Append(sprite.transform.DOScale(size, animSpeed));
                 loopSequence.Append(sprite.DOFade(fade, animSpeed));

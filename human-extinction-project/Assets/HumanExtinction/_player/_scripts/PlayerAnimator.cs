@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using NaughtyAttributes;
 
 namespace CS
 {
@@ -14,9 +15,13 @@ namespace CS
         bool isRunning;
 
 
-        public Transform cameraTransform;
-        public Transform playerHead;
+        [BoxGroup("Stand Up")]public Transform cameraTransform;
+        [BoxGroup("Stand Up")] public Transform playerHead;
         private Vector2 smoothInput;
+        [BoxGroup("Audio")] public AudioSource source;
+        [BoxGroup("Audio")] public AudioClip[] walking;
+        [BoxGroup("Audio")] public AudioClip[] running;
+
 
 
         private void Awake()
@@ -64,12 +69,14 @@ namespace CS
             cameraTransform.DOLocalRotate(Vector3.zero, 1).OnComplete(() => EnablePlayerScripts());
             cameraTransform.localScale = Vector3.one;
 
+            anim.SetBool("allowToMove", true);
+
 
         }
 
         void EnablePlayerScripts()
         {
-            anim.SetBool("doOnce", true);
+            anim.SetBool("standUp", true);
             fps.enabled = true;
             cameraController.enabled = true;
         }

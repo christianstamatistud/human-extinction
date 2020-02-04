@@ -4,37 +4,46 @@ using TMPro;
 using DG.Tweening;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.PostProcessing;
-
-
+using UnityEngine.InputSystem;
 
 namespace CS
 {
 
-    public class MainMenu : MonoBehaviour
+    public class MainMenu : MonoBehaviour, Controls.IMainMenuActions
     {
-        public TMP_InputField inputField;
+        Controls c;
         Animator playerAnimator;
 
         private void Awake()
         {
+            c = new Controls();
+            c.MainMenu.SetCallbacks(this);
             playerAnimator = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Animator>();
         }
-        private void OnGUI()
+
+        private void Start()
         {
-            if (inputField != null)
+            GameManager.Instance.onMainMenu = true;
+
+        }
+
+        private void OnEnable()
+        {
+            c.Enable();
+        }
+
+        private void OnDisable()
+        {
+            c.Disable();
+        }
+
+
+        public void OnStartGame(InputAction.CallbackContext context)
+        {
+
+            if (context.performed && GameManager.Instance.onMainMenu)
             {
-                if (Input.GetKeyDown(KeyCode.Return) && inputField.isFocused)
-                {
-                    print("submit");
-                    if (inputField.text == "y")
-                    {
-                        StandUp();
-                    }
-
-
-                    
-                }
-
+                StandUp();
             }
         }
 
@@ -44,9 +53,9 @@ namespace CS
             playerAnimator.SetBool("standUp", true);
             GameManager.Instance.ToggleCursorState();
             gameObject.SetActive(false);
+            GameManager.Instance.onMainMenu = false;
 
         }
-
 
     }
 
