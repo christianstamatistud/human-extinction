@@ -79,7 +79,10 @@ namespace CS
 
         private void Update()
         {
-
+            if (mo.autoStart)
+            {
+                UseStandardInput();
+            }
             CheckTargetInformation();
             Move();
 
@@ -255,6 +258,55 @@ namespace CS
                     mo.isInteractive = false;
                 }
             }
+        }
+
+        void UseStandardInput()
+        {
+
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                if (!playerMovedFirstTime && playerStart != null)
+                    playerStart();
+
+                playerMovedFirstTime = true;
+                transform.eulerAngles = new Vector3(0, 90, -90);
+                if (!lockedUp && currentDirection != CurrentDirection.moving)
+                    CheckDirection();
+            }
+
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                if (!playerMovedFirstTime && playerStart != null)
+                    playerStart();
+
+                playerMovedFirstTime = true;
+                transform.eulerAngles = new Vector3(0, 90, 90);
+                if (!lockedDown && currentDirection != CurrentDirection.moving)
+                    CheckDirection();
+            }
+
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                if (!playerMovedFirstTime && playerStart != null)
+                    playerStart();
+
+                playerMovedFirstTime = true;
+                transform.eulerAngles = new Vector3(0, -90, 0);
+                if (!lockedLeft && currentDirection != CurrentDirection.moving)
+                    CheckDirection();
+            }
+
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                if (!playerMovedFirstTime && playerStart != null)
+                    playerStart();
+
+                playerMovedFirstTime = true;
+                transform.eulerAngles = new Vector3(0, 90, 0);
+                if (!lockedRight && currentDirection != CurrentDirection.moving)
+                    CheckDirection();
+            }
+
         }
     }
 }
